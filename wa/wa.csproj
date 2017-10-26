@@ -292,9 +292,13 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\vue.js" />
     <Content Include="SPA\app\app.js" />
+    <Content Include="SPA\app\components\virtualScrollComponent.js" />
+    <Content Include="SPA\app\IndexService.js" />
+    <Content Include="SPA\app\TreeService.js" />
     <Content Include="SPA\app\ds.js" />
     <Content Include="SPA\app\vue.js" />
     <Content Include="SPA\Index.html" />
+    <Content Include="SPA\style.css" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

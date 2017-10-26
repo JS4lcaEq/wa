@@ -17,12 +17,13 @@
                     //        self.onLoad(_items);
                     //    }
                     //}, 1000);
-                    $.get("/api/Vue?t=" + Math.random()).done(function (data) {
-                        _items = data.data;
-                        if (self.onLoad) {
-                            self.onLoad(_items);
-                        }
-                    });
+                    //$.get("/api/Vue?t=" + Math.random()).done(function (data) {
+                    //    _items = data.data;
+                    //    if (self.onLoad) {
+                    //        self.onLoad(_items);
+                    //    }
+                    //});
+                    self.load("");
                 }
 
 
@@ -31,6 +32,7 @@
             },
             // загрузка ветки по idp 
             load: function (idp) {
+                var self = this;
                 $.get("/api/Vue/" + idp + "?t=" + Math.random()).done(function (data) {
                     _items = data.data;
                     if (self.onLoad) {

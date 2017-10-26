@@ -1,14 +1,19 @@
 ﻿(function () {
 
-    var vue = new Vue({
+    app.vue = new Vue({
         el: '#vue',
         data: {
             message: 'Hello Vue!',
-            ds: null
+            ds: null,
+            tree: null
         },
         methods: {
             DS: function () {
                 return app.services("ds").get();
+            },
+            ld: function (idp) {
+                console.log("idp", idp);
+                app.services("TreeService").trigger(idp);
             }
         }
         , computed: {
@@ -19,10 +24,10 @@
         }
     });
 
-    app.services("ds").onLoad = function (data) {
-        vue.ds = data;
-    };
+    app.services("TreeService").setOnLoadFunction(function (data) {
+        app.vue.tree = data;
+    });
 
-    vue.ds = app.services("ds").get();
+    app.vue.tree = app.services("TreeService").get();
 
 })();

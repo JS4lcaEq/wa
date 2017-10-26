@@ -18,14 +18,20 @@ namespace WebApi.Models
         private string idp;
         private string nm;
 
+        private static int _count = 0;
+
         public static List<Items> GetList(int count = 10, string idp = null)
         {
             List<Items> list = new List<Items>();
 
-            for(int i = 0; i < count; i++)
+            var maxCount = _count + count;
+
+            for(int i = _count; i < _count + count; i++)
             {
-                list.Add(new Items { Id = idp + i, Idp = idp, Nm = String.Format("Name {0}", i) });
+                list.Add(new Items { Id = i.ToString(), Idp = idp, Nm = String.Format("Name {0}", i) });
             }
+
+            _count = maxCount;
 
             return list;
         }

@@ -3,21 +3,27 @@
 <head>
     <meta charset="utf-8" />
     <title>vue</title>
+    <link href="style.css" rel="stylesheet" />
 </head>
 <body>
     <div id="vue">
         <h1>vue</h1>
-        {{message}} | 
-        <ul>
-            <li v-for="item in ds">{{item}}</li>
-        </ul> 
+        {{message}} |
+        <virtual-scroll-component :src="tree">
+            <a slot="itemTemplate" slot-scope="item" v-on:click="ld(item.item.data.id)" v-bind:class="'level_' + item.item.meta.level">{{item.item.data.nm}}</a>
+        </virtual-scroll-component>
+        <!--<ul v-if="$.isArray(tree)">
+            <li v-for="item in tree"><a v-on:click="ld(item.data.id)" v-bind:class="'level_' + item.meta.level">{{item.data.nm}}</a></li>
+        </ul>--> 
 
     </div>
     <script src="../Scripts/jquery-3.2.1.min.js"></script>
     <script src="app/app.js"></script>
     <script src="app/ds.js"></script>
+    <script src="app/IndexService.js"></script>
+    <script src="app/TreeService.js"></script>
     <script src="../Scripts/vue.js"></script>
-
+    <script src="app/components/virtualScrollComponent.js"></script>
     <script src="app/vue.js"></script>
 </body>
 </html>
