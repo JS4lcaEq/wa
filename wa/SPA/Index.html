@@ -6,24 +6,66 @@
     <link href="style.css" rel="stylesheet" />
 </head>
 <body>
-    <div id="vue">
-        <h1>vue</h1>
-        {{message}} |
-        <virtual-scroll-component :src="tree">
-            <a slot="itemTemplate" slot-scope="item" v-on:click="ld(item.item.data.id)" v-bind:class="'level_' + item.item.meta.level">{{item.item.data.nm}}</a>
-        </virtual-scroll-component>
-        <!--<ul v-if="$.isArray(tree)">
-            <li v-for="item in tree"><a v-on:click="ld(item.data.id)" v-bind:class="'level_' + item.meta.level">{{item.data.nm}}</a></li>
-        </ul>--> 
+    <div>
+        <p>Начало управляемой Vue части страницы >>>>>>>>>> </p>
 
+        <div id="vue">
+
+            <router-component></router-component>
+
+            <h1>vue</h1>
+
+            <a href="#Home">Home</a> | <a href="#Page1">Page1</a>
+            <p>текущий урл = "{{currentRoute}}" | компонент отображающий текущую страницу = "{{ViewComponent}}"</p>
+
+            ========= маршрутизация =======================================================
+            <component v-bind:is="ViewComponent">
+                <!-- изменяя vm.currentView можно переключаться между компонентами -->
+            </component>
+            ========= /маршрутизация =======================================================
+            <p>
+                {{message}} | ws1:{ws1.Debug()}} | ws2:{ws2.Debug()}}
+            </p>
+            <p>
+                {{ds1.GetBussy()}}
+            </p>
+            <virtual-scroll-component :src="Ds" v-on:on-scroll-up="onScrollUp" v-on:on-scroll-down="onScrollDown">
+                <a slot="itemTemplate" slot-scope="scope" v-if="scope.item && scope.item.mt && scope.item.dt" v-on:click="ld(scope.item.dt.id)" v-bind:class="'level_' + scope.item.mt.lvl">{{scope.item.dt.nm}}</a>
+            </virtual-scroll-component>
+            <button v-on:click="onTest()">test</button> Ds: {Ds}} | test: {test}}
+            ==========================
+            <test-component :src="Ds" >
+                <a slot="itemTemplate" slot-scope="scope" >{{scope.item}}</a>
+            </test-component>
+            ==========================
+            <p v-for="item in testIndex" v-on:click="onTestChange(item)">{{item}}</p>
+
+        </div>
+        <p> <<<<< конец управляемой Vue части страницы</p>
     </div>
     <script src="../Scripts/jquery-3.2.1.min.js"></script>
-    <script src="app/app.js"></script>
-    <script src="app/ds.js"></script>
-    <script src="app/IndexService.js"></script>
-    <script src="app/TreeService.js"></script>
     <script src="../Scripts/vue.js"></script>
+
+
+    <script src="app/app.js"></script>
+
+
+
+
+    <script src="/SPA/app/IndexService.js"></script>
+    <script src="app/TreeService.js"></script>
+    <script src="app/WindowService.js"></script>
+    <script src="app/DataSourceService.js"></script>
+    <script src="app/TemplateService.js"></script>
+    <script src="app/components/Pages/HomeComponent.js"></script>
+    <script src="app/components/Pages/NotFoundPageComponent.js"></script>
+    <script src="app/components/Pages/Page1Component.js"></script>
     <script src="app/components/virtualScrollComponent.js"></script>
+    <script src="app/components/TestComponent.js"></script>
+    <script src="app/components/RouterComponent.js"></script>
+
+
     <script src="app/vue.js"></script>
+
 </body>
 </html>

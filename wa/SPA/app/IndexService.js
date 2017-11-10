@@ -1,7 +1,7 @@
 ﻿(function () {
 
-    function fn(injections) {
-        
+    function fn() {
+        var _curr = {startIndex:0, maxIndex: 50, endIndex: 50, len: 50, count: 0};
         return {
             get: function (srcArray, idFieldName) {
                 var self = this;
@@ -13,11 +13,13 @@
             },
             renderSingleBranchToArray: function (branches, currentBranchId, destinationArray, lvl) {
                 var self = this;
+                _curr.count++;
+                console.log("renderSingleBranchToArray ", _curr.count, " id=", currentBranchId );
                 var currentBranch = branches[currentBranchId];
                 if (currentBranch && currentBranch.isOpen) {
                     var l = lvl + 1;
                     for (var i = 0; i < currentBranch.items.length; i++) {
-                        destinationArray.push({ "meta": {"level":l}, "data": currentBranch.items[i] });
+                        destinationArray.push({ "mt": {"lvl":l}, "dt": currentBranch.items[i] });
                         if (branches[currentBranch.items[i].id]) {
                             self.renderSingleBranchToArray(branches, currentBranch.items[i].id, destinationArray, l);
                         }
@@ -43,6 +45,6 @@
 
     }
 
-    app.services("IndexService", fn);
+    pplctn.services("IndexService", fn);
 
 })();

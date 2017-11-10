@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Angular</title>
+</head>
+<body>
+    <div ng-controller="MainCtrl as ctrl">
+        a:{{2+2}}
+        debug: {{ctrl.debug}}
+        <p>==== index.html ===========================================</p>
+        <virtual-scroll window-data="d.wd" src-data="d.sd">
+        <span ng-click="ctrl.onClick()">virtual-scroll transclude item="{{item}}"</span>
+        </virtual-scroll>
+        <p>==== index.html ===========================================</p>
+        wd:{{d}}
+        ts = {{ctrl.ts.isBussy}} | {{ctrl.ts.Get()}} | {{ctrl.br}}
+    </div>
+
+    <script src="../Scripts/jquery-3.2.1.min.js"></script>
+    <script src="../Scripts/angular.min.js"></script>
+    <script src="../Scripts/angular-route.min.js"></script>
+    <script src="../Scripts/angular-sanitize.min.js"></script>
+    
+    <script src="app/app.js"></script>
+    <script src="app/tree1Service.js"></script>
+    <script src="app/mainController.js"></script>
+
+    <script src="app/virtualScrollDirective.js"></script>
+    <script>angular.bootstrap("html", ['app']);</script>
+</body>
+</html>

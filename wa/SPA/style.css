@@ -1,54 +1,70 @@
 ﻿li a {
     display: block;
 }
+
 ul {
     list-style: none;
 }
+
 .level_1 {
     margin-left: 20px;
 }
+
 .level_2 {
     margin-left: 40px;
 }
+
 .level_3 {
     margin-left: 60px;
 }
+
 .level_4 {
     margin-left: 80px;
 }
+
 .level_5 {
     margin-left: 100px;
 }
+
 .level_6 {
     margin-left: 120px;
 }
+
 .level_7 {
     margin-left: 140px;
 }
+
 /* virtual-scroll-component */
 .virtual-scroll-component {
     border: 1px solid #ccc;
-    height: 100px;
+    height: 200px;
     overflow: hidden;
 }
+
 .virtual-scroll-component-scroll {
     background-color: green;
     width: 19px;
     height: 100px;
     float: right;
     overflow-y: auto;
-    margin-left: -30px;
+    margin-left: -20px;
 }
+
 .virtual-scroll-component-slider {
-    height: 200px;
+    height: 400px;
 }
-.virtual-scroll-component-list-box{
-    height: 101px;
+
+.virtual-scroll-component-list-box {
     background-color: aliceblue;
-    margin-right: 20px;
+    overflow-y: scroll;
 }
+
 .virtual-scroll-component ul {
     margin: 0;
     padding: 0;
+}
+
+.virtual-scroll-component li {
+    overflow: hidden;
 }
 /* /virtual-scroll-component */

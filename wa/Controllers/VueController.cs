@@ -24,7 +24,7 @@ namespace WebApi.Controllers
         {
             ControllerReturn ret = new ControllerReturn();
 
-            ret.Data = Items.GetList(10000, Translate(id));
+            ret.Data = Items.GetList(1000, Translate(id));
             ret.Success = true;
 
             return ret;

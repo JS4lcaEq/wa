@@ -1,0 +1,10 @@
+﻿<div v-bind:id="current.id" class="virtual-scroll-component">
+    <div class="virtual-scroll-component-scroll" v-on:scroll="onFastScroll" v-bind:style="elements.scroll.style">
+        <div class="virtual-scroll-component-slider" v-bind:style="elements.slider.style"></div>
+    </div>
+    <div class="virtual-scroll-component-list-box" v-on:scroll="onScroll" v-bind:style="elements.listBox.style">
+        <ul v-if="(wndw && wndw.length > 0)">
+            <li v-for="item in wndw" v-bind:style="elements.listItem.style"> <slot name="itemTemplate" :item="item"></slot> </li>
+        </ul>
+    </div>
+</div>
