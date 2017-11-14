@@ -67,12 +67,14 @@
 
                 Get: function () {
                     var ret = [];
-                    for (var i = _curr.indexes.start; i < _curr.indexes.end; i++) {
+                    for (var i = _curr.indexes.start; i <= _curr.indexes.end; i++) {
                         ret.push(_curr.src[i]);
                     }
                     return ret;
                 },
-
+                GetIndexes: function () {
+                    return _curr.indexes;
+                },
                 Debug: function () {
                     return _curr.indexes;
                 }

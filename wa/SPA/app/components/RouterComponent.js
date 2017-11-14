@@ -1,9 +1,9 @@
 ﻿(function () {
     var _curr = {
         routes: [
-            { hashMask: '#Home.*', component: 'home-page-component' },
-            { hashMask: '#Page1.*', component: 'page1-component' },
-            { hashMask: '.*', component: 'notfound-page-component' },
+            { hashMask: '#Home.*', component: 'home-page-component', text: "Home", link: "#Home" },
+            { hashMask: '#Page1.*', component: 'page1-component', text: "Page1", link: "#Page1" },
+            { hashMask: '.*', component: 'notfound-page-component', text: "Not found", link: "#NotFound" },
         ]
     };
 
@@ -19,7 +19,12 @@
         },
 
         computed: {
-
+            cRoute: function () {
+                for (var i = 0; i < _curr.routes.length; i++) {
+                    var item = _curr.routes[i];
+                    item.hashMask
+                }
+            }
         },
 
         methods: {

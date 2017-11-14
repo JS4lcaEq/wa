@@ -1,4 +1,8 @@
 ﻿<div class="router-component">
-    <p>routes = {{routes}}</p>
+    <p>
+    <ul>
+        <li v-for="item in routes"><a v-bind:href="item.link">{{item.text}}</a></li>
+        </ul>
+    </p>
     <p>cHash = {{cHash}}</p>
 </div>

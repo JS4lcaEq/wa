@@ -16,7 +16,7 @@
 
 
     var _ws1 = pplctn.services("WindowService").New();
-    var _ds = window.pplctn.services("DataSourceService");
+    var _ds = window.pplctn.services("DataSourceService").New();
     var data = { data: null };
 
     var _testData = {};
@@ -38,7 +38,6 @@
             dataSourceUpdated: 0,
 
             currentRoute: window.location.hash
-
 
         },
 
@@ -73,10 +72,7 @@
             onTestChange: function (name) {
                 setTimeout(function () {_ds.set(_testData[name]); }, 10);
                 
-                //this.test.nm = name;
-                //this.test.get = function (name) {
-                //    return _testData[name];
-                //};
+
             }
         },
 

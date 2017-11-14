@@ -1,10 +1,14 @@
 ﻿(function () {
-
-    function fn(injections) {
+    var _store = {};
+    var _index = 0;
+    function _fn(name) {
         var _curr = {
             data: [],
-            onSet: []
+            onSet: [],
+            itemIndex: _index,
+            itemName: name
         };
+        _index++;
         function _onSet(data) {
             for (var i = 0; i < _curr.onSet.length; i++) {
                 var onSetFn = _curr.onSet[i];
@@ -25,6 +29,24 @@
             },
             addObserver: function (observer) {
                 _curr.onSet.push(observer);
+            }
+        };
+    }
+
+    function fn() {
+        return {
+            New: function () {
+                return this.Get();
+            },
+            Get: function (name) {
+                var _name = "WindowService" + _store.length;
+                if (name) {
+                    _name = name;
+                }
+                if (!_store[_name]) {
+                    _store[_name] = _fn(_name);
+                }
+                return _store[_name];
             }
         };
     }

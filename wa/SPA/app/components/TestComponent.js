@@ -1,5 +1,5 @@
 ﻿(function () {
-    var _ds = pplctn.services("DataSourceService");
+    var _ds = pplctn.services("DataSourceService").New();
 
     function update(dst) {
         var ret = [];

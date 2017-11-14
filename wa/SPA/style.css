@@ -37,7 +37,7 @@ ul {
 /* virtual-scroll-component */
 .virtual-scroll-component {
     border: 1px solid #ccc;
-    height: 200px;
+    height: 400px;
     overflow: hidden;
 }
 
@@ -62,6 +62,7 @@ ul {
 .virtual-scroll-component ul {
     margin: 0;
     padding: 0;
+    margin-bottom: 300px;
 }
 
 .virtual-scroll-component li {
