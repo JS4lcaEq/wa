@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Angular</title>
+    <link href="virtual-scroll.css" rel="stylesheet" />
+</head>
+<body>
+    <div ng-controller="MainCtrl as ctrl">
+        <!--ctrl:{{ctrl}}| cctrl: {{cctrl}}-->
+        <div virtual-scroll="virtual-scroll" src="item in ctrl.data" item-height="20" style="height: 200px; border: solid 1px red;">
+            <span><a ng-click="ctrl.onClick(item)">ctrl click</a>item: {{item}}</span>
+        </div>
+    </div>
+    <script src="lib/jquery-1.12.4.min.js"></script>
+    <script src="lib/angular.min.js"></script>
+    <script src="lib/angular-route.min.js"></script>
+
+    <script src="app/app.js"></script>
+    <script src="app/virtualScrollController.js"></script>
+    <script src="app/virtualScrollDirective.js"></script>
+    <script src="app/mainController.js"></script>
+    <script>angular.bootstrap("html", ['app']);</script>
+</body>
+</html>

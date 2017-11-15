@@ -1,0 +1,16 @@
+﻿.virtual-scroll-directive .virtual-scroll-list-box {
+    overflow-y: scroll;
+}
+
+.virtual-scroll-directive .virtual-scroll-scroll {
+    height: 100%;
+    width: 19px;
+    float: right;
+    overflow-y: scroll;
+    margin-left: -19px;
+}
+
+.virtual-scroll-directive ul {
+    margin: 0;
+    padding: 0;
+}
