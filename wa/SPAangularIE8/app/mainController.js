@@ -1,6 +1,5 @@
 ﻿(function () {
 
-
     function fn( $scope, $route //, $routeParams //, $location
     ) {
 
@@ -14,7 +13,7 @@
 
         this.name = 'MainCtrl';
         this.data = [1,2,3];
-        this.onClick = function (inp) { alert('MainCtrl' + inp); };
+        this.onClick = function (inp) { alert('MainCtrl onClick(' + inp + ')'); };
         this.data = generate(59);
 
     }
