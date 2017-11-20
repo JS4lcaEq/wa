@@ -8,7 +8,11 @@
 <body>
     <div ng-controller="MainCtrl as ctrl">
         <!--ctrl:{{ctrl}}| cctrl: {{cctrl}}-->
-        <div virtual-scroll="item in ctrl.data" src="item in ctrl.data" item-height="20" style="height: 200px; border: solid 1px red;">
+        <p>
+            data length: <input ng-model="ctrl.dataLength" />
+            <button ng-click="ctrl.setData(ctrl.dataLength)">set data</button>
+        </p>
+        <div virtual-scroll="item in ctrl.data" style="height: 200px; border: solid 1px red;">
             <span><a ng-click="ctrl.onClick(item.id)">ctrl.onClick(item.id)</a> item: "{{item}}"</span>
         </div>
     </div>
@@ -17,7 +21,8 @@
     <script src="lib/angular-route.min.js"></script>
 
     <script src="app/app.js"></script>
-    <script src="app/virtualScrollController.js"></script>
+    <script src="app/dataService.js"></script>
+
     <script src="app/virtualScrollDirective.js"></script>
     <script src="app/mainController.js"></script>
     <script>angular.bootstrap("html", ['app']);</script>
