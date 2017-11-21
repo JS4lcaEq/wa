@@ -6,7 +6,7 @@
 
         function item() {
             var _curr = { name: "DataService item[" + _index + "]", data: [], window: [], indexes: {start: 0, end: 0, max: 0}, winLength: 10 };
-
+            var _wndw = [];
             function _setIndexes(startIndex) {
                 if (startIndex != undefined) {
                     _curr.indexes.start = startIndex;
@@ -27,7 +27,7 @@
                     _w.push(_curr.data[i]);
                 }
                 _curr.window.length = 0;
-                _curr.window = _w;
+                _wndw = _w;
 
             }
 
@@ -42,8 +42,11 @@
                         _setIndexes();
                     }
                 },
+                setIndex: function (startIndex) {
+                    _setIndexes(startIndex);
+                },
                 get: function () {
-                    return _curr.window;
+                    return _wndw;
                 },
                 up: function () {
                     _setIndexes(_curr.indexes.start + 1);

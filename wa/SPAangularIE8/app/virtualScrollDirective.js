@@ -64,7 +64,20 @@
 
 
         var self = this;
-        var _curr = { len: 50, liHeight: 30, controlHeight: 0, sliderHeight: 3, element: null, elements: { scroll: null, slider: null, listBox: null }  };
+        var _curr = {prevScroll:0, len: 50, liHeight: 30, controlHeight: 100, sliderHeight: 3, visibleLiCount: 0, element: null, elements: { scroll: null, slider: null, listBox: null }, timer: null, isScroll: false  };
+
+        function _setSliderHeight() {
+            _curr.visibleLiCount = _curr.controlHeight / _curr.liHeight;
+            _curr.sliderHeight = _ds.getIndex().max / _curr.visibleLiCount;
+            self.sliderStyle.height = _ds.getIndex().max * _curr.liHeight + "px";
+        }
+
+        function _setScrollScroll() {
+            var scroll = (_ds.getIndex().start / _ds.getIndex().max) * _curr.sliderHeight * _curr.controlHeight;
+            //console.log("_setScrollScroll scroll = ", scroll, " element = ", _curr.elements.scroll.get(0).scrollTop);
+            _curr.elements.scroll.get(0).scrollTop = scroll;
+        }
+
 
         self.liStyle = { "height": _curr.liHeight + "px" };
 
@@ -73,8 +86,7 @@
         self.setLiHeight = function (height) {
             _curr.liHeight = height;
             self.liStyle.height = _curr.liHeight + "px";
-
-           
+            _setSliderHeight();
         };
            
         self.setElement = function (element) {
@@ -86,22 +98,52 @@
             _curr.elements.listBox.height(_curr.controlHeight);
             _curr.elements.scroll.height(_curr.controlHeight);
             _curr.elements.listBox.on("scroll", function (event) {
+                
                 var _scroll = event.target.scrollTop;
                 //console.log("scroll", _scroll);
                 if (_scroll > 30) {
-                    $scope.$apply();
+                    _curr.isScroll = true;
+                    $scope.$digest();
                     if (_ds.getIndex().start < (_ds.getIndex().max - 6)) {
                         event.target.scrollTop = 30;
                         _ds.up();
+                        
+                        _setScrollScroll();
                     }
                 }
                 if (_scroll < 30) {
+                    _curr.isScroll = true;
                     _ds.down();
-                    $scope.$apply();
+                    
+                    _setScrollScroll();
+                    $scope.$digest();
                     if (_ds.getIndex().start > 0) {
                         event.target.scrollTop = 30;
                     }
                 }
+            });
+            _curr.elements.scroll.on("scroll", function (event) {
+                if (!_curr.isScroll) {
+
+
+                    if (_curr.timer) {
+                        $timeout.cancel(_curr.timer);
+                    }
+                    
+                    _curr.timer = $timeout(function () {
+                        var _scroll = event.target.scrollTop;
+                        var index = Math.round(_scroll / _curr.liHeight);
+                        _ds.setIndex(index);
+                        $scope.$digest();
+                        console.log("_curr.elements.scroll.on(scroll) index=", index);
+                    }, 8);
+ 
+
+
+                    //_curr.prevScroll = _scroll;
+                }
+
+                _curr.isScroll = false;
             });
         };
 
@@ -109,7 +151,7 @@
             get: function () { return _ds.get(); },
             setData: function (data) {
                 _ds.setData(data);
-
+                _setSliderHeight();
             },
             getIndex: function () {
                 return _ds.getIndex();
