@@ -152,6 +152,7 @@
             setData: function (data) {
                 _ds.setData(data);
                 _setSliderHeight();
+                _setScrollScroll();
             },
             getIndex: function () {
                 return _ds.getIndex();
@@ -178,12 +179,12 @@
 
             controller.ds = _ds;
 
-            controller.debug = {
-                "attrs.virtualScroll": attrs.virtualScroll,
-                "_curr.dataSourceName": _curr.dataSourceName,
-                "_curr.ngRepeat": _curr.ngRepeat
-                , "controller.window.getIndex()": controller.window.getIndex()
-            };
+            //controller.debug = {
+            //    "attrs.virtualScroll": attrs.virtualScroll,
+            //    "_curr.dataSourceName": _curr.dataSourceName,
+            //    "_curr.ngRepeat": _curr.ngRepeat
+            //    , "controller.window.getIndex()": controller.window.getIndex()
+            //};
 
 
             scope.$watch(_curr.dataSourceName, function (nwv, ldv) {
