@@ -138,9 +138,6 @@
                         //console.log("_curr.elements.scroll.on(scroll) index=", index);
                     }, 8);
  
-
-
-                    //_curr.prevScroll = _scroll;
                 }
 
                 _curr.isScroll = false;
@@ -202,7 +199,6 @@
             compileFn(scope);
             element.find(".virtual-scroll-list-box").append(transcludeElem);
             controller.setElement(element);
-
 
         }
 
