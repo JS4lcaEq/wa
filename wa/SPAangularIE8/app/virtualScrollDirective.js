@@ -135,7 +135,7 @@
                         var index = Math.round(_scroll / _curr.liHeight);
                         _ds.setIndex(index);
                         $scope.$digest();
-                        console.log("_curr.elements.scroll.on(scroll) index=", index);
+                        //console.log("_curr.elements.scroll.on(scroll) index=", index);
                     }, 8);
  
 
