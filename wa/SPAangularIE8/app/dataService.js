@@ -5,7 +5,7 @@
         var _index = 0;
 
         function item() {
-            var _curr = { name: "DataService item[" + _index + "]", data: [], window: [], indexes: {start: 0, end: 0, max: 0}, winLength: 10 };
+            var _curr = { name: "DataService item[" + _index + "]", data: [], window: [], indexes: {start: 0, end: 0, max: 0}, winLength: 20 };
             var _wndw = [];
             function _setIndexes(startIndex) {
                 if (startIndex != undefined) {

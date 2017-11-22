@@ -232,7 +232,14 @@ event.target.scrollTop = 30;
 
         return {
             transclude: true,
-            templateUrl: 'virtualScrollDirectiveTemplate.html?t=1',
+            //templateUrl: 'virtualScrollDirectiveTemplate.html?t=1',
+            template:   '<div class="virtual-scroll-directive">'+
+                        '   <div class="virtual-scroll-scroll">'+
+                        '       <div class="virtual-scroll-slider" ng-style="virtualScrollDirectiveController.sliderStyle"></div>'+
+                        '   </div>'+
+                        '   <div class="virtual-scroll-list-box"></div>'+
+                        '   <div class="debug-box" style="display: none; position:absolute; width: 900px; height: 200px; background-color:antiquewhite; opacity: .5;">{{ virtualScrollDirectiveController.debug }}</div>'+
+                        '</div>',
             link: link,
             controller: _controller, //'VirtualScrollCtrl',
             controllerAs: 'virtualScrollDirectiveController'

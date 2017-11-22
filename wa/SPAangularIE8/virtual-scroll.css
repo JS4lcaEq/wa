@@ -7,7 +7,7 @@
     width: 19px;
     float: right;
     overflow-y: scroll;
-    margin-left: -10px;
+    margin-left: -19px;
 }
 
 .virtual-scroll-directive ul {
@@ -18,5 +18,5 @@
 }
 
 .virtual-scroll-directive li {
-    /*height: 20px;*/
+   overflow:hidden;
 }
