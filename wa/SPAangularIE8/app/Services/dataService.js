@@ -66,8 +66,6 @@
         };
     }
 
-
-
     angular.module('app').service('DataService', fn);
 
 })();

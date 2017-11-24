@@ -1,6 +1,6 @@
 ﻿(function () {
 
-    function fn( $scope, $route //, $routeParams //, $location
+    function fn($scope, $route, TreeService//, $routeParams //, $location
     ) {
         var self = this;
         function generate(n) {
@@ -19,6 +19,20 @@
         this.setData = function (n) {
             self.data = generate(n);
         };
+
+        this.ts = TreeService.New();
+
+        this.ts.setOnLoaded(
+            function (loadedBranch) {
+                console.log("loadedBranch: ", loadedBranch);
+            }
+        );
+
+        this.ts.open("null");
+        this.ts.load(1);
+        this.ts.load(2);
+
+        console.log("ts:", this.ts, " debug:", this.ts.debug());
 
     }
 

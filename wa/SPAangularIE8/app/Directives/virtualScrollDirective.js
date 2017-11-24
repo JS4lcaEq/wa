@@ -85,13 +85,16 @@
 
         function _setSliderHeight() {
             _c.visibleLiCount = _c.controlHeight / _c.liHeight;
-            _c.k = _ds.getIndex().max / _c.visibleLiCount;
-            _c.sliderHeight = (_ds.getIndex().max + 1) * _c.liHeight;
+            
+            _c.sliderHeight = (_ds.getIndex().max - _c.visibleLiCount) * _c.liHeight;
 
-            if (_c.sliderHeight > 100000) {
-                _c.sliderHeight = 100000;
+            if (_c.sliderHeight > 500000) {
+                _c.sliderHeight = 500000;
             }
             _c.maxScroll = _c.sliderHeight - _c.controlHeight;
+
+            _c.k = (_c.sliderHeight - _c.controlHeight) / _ds.getIndex().max;
+
             _c.virtualLiHeight = _c.maxScroll / (_ds.getIndex().max + 1);
             self.sliderStyle.height = _c.sliderHeight + "px";
 
@@ -99,15 +102,24 @@
         }
 
         function _setScrollScroll() {
-            var scroll = (_ds.getIndex().start / (_ds.getIndex().max)) * _c.sliderHeight;
+            var scroll = _ds.getIndex().start * _c.k;
             //console.log("_setScrollScroll scroll = ", scroll, " element = ", _curr.elements.scroll.get(0).scrollTop);
             _c.elements.scroll.get(0).scrollTop = scroll;
+        }
+
+        function _setListBoxMargins() {
+            if (_ds.getIndex().start < 1) {
+                self.listStyle["margin-top"] = 0;
+            }
+
         }
 
 
         self.liStyle = { "height": _c.liHeight + "px" };
 
-        self.sliderStyle = { "height": 100 * _c.k + "%" };
+        self.sliderStyle = { "height": _c.sliderHeight + "px" };
+
+        self.listStyle = { "margin-top": "30px" };
 
         self.setLiHeight = function (height) {
             _c.liHeight = height;
@@ -130,23 +142,29 @@
                 if (_scroll > 30) {
                     _c.isScroll = true;
                     $scope.$digest();
-                    if (_ds.getIndex().start < (_ds.getIndex().max - 6)) {
-                        
 
-                    }                        _ds.up();
+                    _ds.up();
+                    _setScrollScroll();
 
-                        _setScrollScroll();
-event.target.scrollTop = 30;
+
+                        event.target.scrollTop = 30;
+
+                    
                 }
                 if (_scroll < 30) {
                     _c.isScroll = true;
                     _ds.down();
-
+  
                     _setScrollScroll();
-                    $scope.$digest();
+                    
 
+                    if (_ds.getIndex().start < 1) {
+                        self.listStyle["margin-top"] = "0";
+                    } else {
+                        self.listStyle["margin-top"] = "30px";
                         event.target.scrollTop = 30;
-
+                    }
+                    $scope.$digest();
                 }
             });
             _c.elements.scroll.on("scroll", function (event) {
@@ -158,7 +176,7 @@ event.target.scrollTop = 30;
 
                     _c.timer = $timeout(function () {
                         var _scroll = event.target.scrollTop;
-                        var index = Math.round(_scroll / _c.virtualLiHeight);
+                        var index = Math.round(_scroll / _c.k);
                         _ds.setIndex(index);
                         $scope.$digest();
                         //console.log("_curr.elements.scroll.on(scroll) index=", index, " _scroll=", _scroll);
@@ -220,7 +238,7 @@ event.target.scrollTop = 30;
                 _curr.trnscld = concatTransEl(clone);
             });
 
-            var transcludeElem = angular.element('<ul><li ng-style="virtualScrollDirectiveController.liStyle" ng-repeat="' + _curr.ngRepeat + '">' + _curr.trnscld + '</li></ul>');
+            var transcludeElem = angular.element('<ul ng-style="virtualScrollDirectiveController.listStyle"><li ng-style="virtualScrollDirectiveController.liStyle" ng-repeat="' + _curr.ngRepeat + '">' + _curr.trnscld + '</li></ul>');
 
             var compileFn = $compile(transcludeElem);
             compileFn(scope);

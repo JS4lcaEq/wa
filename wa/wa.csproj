@@ -1086,20 +1086,21 @@
     <Content Include="Scripts\vue.js" />
     <Content Include="SPAangularIE8\app\app.js" />
     <Content Include="SPAangularIE8\app\component.js" />
+    <Content Include="SPAangularIE8\app\Services\treeService.js" />
     <Content Include="SPAangularIE8\app\virtualScrollController.js" />
     <Content Include="SPAangularIE8\app\mainController.js" />
     <Content Include="SPAangularIE8\app\Modules\data.js" />
     <Content Include="SPAangularIE8\app\route.js" />
     <Content Include="SPAangularIE8\app\tree1Service.js" />
     <Content Include="SPAangularIE8\app\treeService.js" />
-    <Content Include="SPAangularIE8\app\virtualScrollDirective.js" />
-    <Content Include="SPAangularIE8\app\dataService.js" />
+    <Content Include="SPAangularIE8\app\Directives\virtualScrollDirective.js" />
+    <Content Include="SPAangularIE8\app\Services\dataService.js" />
     <Content Include="SPAangularIE8\index.html" />
     <Content Include="SPAangularIE8\lib\angular-route.min.js" />
     <Content Include="SPAangularIE8\lib\angular.min.js" />
     <Content Include="SPAangularIE8\lib\jquery-1.12.4.min.js" />
-    <Content Include="SPAangularIE8\virtual-scroll.css" />
-    <Content Include="SPAangularIE8\virtualScrollDirectiveTemplate.html" />
+    <Content Include="SPAangularIE8\app\Directives\virtual-scroll.css" />
+    <Content Include="SPAangularIE8\app\Directives\virtualScrollDirectiveTemplate.html" />
     <Content Include="SPAngular\app\app.js" />
     <Content Include="SPAngular\app\component.js" />
     <Content Include="SPAngular\app\mainController.js" />
@@ -1159,6 +1160,7 @@
     <Content Include="Scripts\version.json" />
     <Content Include="SPAangularIE8\lib\angular-route.min.js.map" />
     <Content Include="SPAangularIE8\lib\angular.min.js.map" />
+    <Content Include="SPAangularIE8\app\Services\treeServiceTestData.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

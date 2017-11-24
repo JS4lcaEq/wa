@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <title>Angular</title>
-    <link href="virtual-scroll.css" rel="stylesheet" />
+    <link href="app/Directives/virtual-scroll.css" rel="stylesheet" />
 </head>
 <body>
     <div ng-controller="MainCtrl as ctrl">
@@ -15,15 +15,22 @@
         <div virtual-scroll="item in ctrl.data" style="border: solid 1px red; height: 200px; ">
             <span><a ng-click="ctrl.onClick(item.id)">ctrl.onClick(item.id)</a> item: "{{item}}"</span>
         </div>
+        <p>
+{{ctrl.ts.debug()}}
+        </p>
+        {{ctrl.ts.get()}}
+
     </div>
+    <a href="app/Services/treeServiceTestData.json">app/Services/treeServiceTestData.json</a>
     <script src="lib/jquery-1.12.4.min.js"></script>
     <script src="lib/angular.min.js"></script>
     <script src="lib/angular-route.min.js"></script>
 
     <script src="app/app.js"></script>
-    <script src="app/dataService.js?v=1"></script>
+    <script src="app/Services/dataService.js"></script>
+    <script src="app/Services/treeService.js"></script>
 
-    <script src="app/virtualScrollDirective.js?v=1"></script>
+    <script src="app/Directives/virtualScrollDirective.js"></script>
     <script src="app/mainController.js"></script>
     <script>angular.bootstrap("html", ['app']);</script>
 </body>
