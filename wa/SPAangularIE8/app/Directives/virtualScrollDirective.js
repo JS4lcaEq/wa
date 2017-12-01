@@ -180,7 +180,7 @@
                         _ds.setIndex(index);
                         $scope.$digest();
                         //console.log("_curr.elements.scroll.on(scroll) index=", index, " _scroll=", _scroll);
-                    }, 7);
+                    },12);
 
                 }
 
