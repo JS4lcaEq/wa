@@ -16,7 +16,7 @@
 
 
     var _ws1 = pplctn.services("WindowService").New();
-    var _ds = window.pplctn.services("DataSourceService").New();
+    var _ds = pplctn.services("DataSourceService").New();
     var data = { data: null };
 
     var _testData = {};

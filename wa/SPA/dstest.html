@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>vue</title>
+    <link href="style.css" rel="stylesheet" />
+</head>
+<body>
+    <div>
+        <p>Начало управляемой Vue части страницы >>>>>>>>>> </p>
+
+        <div id="vue">
+
+            <h1>vue</h1>
+
+
+            <button v-on:click="onTest()">test</button> Ds: {{DS()}} | {{FD()}} 
+
+            <p v-for="item in testIndex" v-on:click="onTestChange(item)">{{item}}</p>
+
+        </div>
+        <p> <<<<< конец управляемой Vue части страницы</p>
+    </div>
+    <script src="../Scripts/jquery-3.2.1.min.js"></script>
+    <script src="../Scripts/vue.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/Services/DataSourceService.js"></script>
+
+
+    <script>
+        (function () {
+
+            var _testData = {};
+
+            var _ds = pplctn.services("DataSourceService").New();
+
+            pplctn.vue = new Vue({
+                el: '#vue',
+
+                data: {
+                    message: 'Hello Vue!',
+                    testIndex: [],
+                    ds: _ds
+                },
+
+                methods: {
+                    DS: function () {
+                        return _ds;
+                    },
+
+                    FD: function (n) {
+                        var dt = new Date(_ds.updated);
+                        return dt.toTimeString();
+                    }, 
+                    onTest: function () {
+                        var _test = [];
+                        var _name = Math.random();
+                        for (var i = 0; i < 100000; i++) {
+                            _test.push({ "id": i, "nm": _name + "_" + i });
+                        }
+                        _testData[_name] = _test;
+                        this.testIndex.push(_name);
+                        //this.test.data = _test;
+                    },
+                    onTestChange: function (name) {
+                        setTimeout(function () { _ds.set(_testData[name]); }, 10);
+                    }
+                },
+
+                computed: {
+                    Ds: function () {
+                        return pplctn.services("DataSourceService");
+                    }
+                    
+                    , ViewComponent: function () {
+                        return _routes[this.currentRoute] || _routes.notfound;
+                    }
+                }
+
+            });
+
+
+
+
+        })();
+
+
+    </script>
+
+</body>
+</html>
