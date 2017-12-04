@@ -14,9 +14,13 @@
             <h1>vue</h1>
 
 
-            <button v-on:click="onTest()">test</button> Ds: {{DS()}} | {{FD()}} 
+            <button v-on:click="onTest()">test</button>ds: {{ds}} | ws: {{ws}} | ss: {{ss.Get('dss')}}
 
             <p v-for="item in testIndex" v-on:click="onTestChange(item)">{{item}}</p>
+
+            <hr />
+                <data-test-component :src="ds"></data-test-component>
+            <hr />
 
         </div>
         <p> <<<<< конец управляемой Vue части страницы</p>
@@ -25,33 +29,35 @@
     <script src="../Scripts/vue.js"></script>
     <script src="app/app.js"></script>
     <script src="app/Services/DataSourceService.js"></script>
-
-
+    <script src="app/Services/WindowService.js"></script>
+    <script src="app/Services/StoreService.js"></script>
+    <script src="app/components/DataTest/DataTestComponent.js"></script>
     <script>
         (function () {
 
             var _testData = {};
 
             var _ds = pplctn.services("DataSourceService").New();
+            var _ws = pplctn.services("WindowService").New();
+            var _ss = pplctn.services("StoreService");
+            _ss.Set(_ds, "dss");
+
+            _ds.addObserver(function (data) { _ws.SetSrc(data); });
+
 
             pplctn.vue = new Vue({
                 el: '#vue',
 
                 data: {
-                    message: 'Hello Vue!',
-                    testIndex: [],
-                    ds: _ds
+                    message: 'Hello Vue!'
+                    , testIndex: []
+                    , ds: _ds
+                    , ws: _ws
+                    , ss: _ss
                 },
 
                 methods: {
-                    DS: function () {
-                        return _ds;
-                    },
-
-                    FD: function (n) {
-                        var dt = new Date(_ds.updated);
-                        return dt.toTimeString();
-                    }, 
+ 
                     onTest: function () {
                         var _test = [];
                         var _name = Math.random();
@@ -63,7 +69,7 @@
                         //this.test.data = _test;
                     },
                     onTestChange: function (name) {
-                        setTimeout(function () { _ds.set(_testData[name]); }, 10);
+                        setTimeout(function () { _ds.set(_testData[name]); }, 500);
                     }
                 },
 
@@ -78,9 +84,6 @@
                 }
 
             });
-
-
-
 
         })();
 

@@ -13,8 +13,8 @@
                 return true;
             },
             Get: function (name) {
-                if (!_store[_name]) {
-                    return _store[_name];
+                if (_store[name]) {
+                    return _store[name];
                 }
                 return false;
             }

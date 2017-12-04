@@ -11,8 +11,6 @@
 
     _ws.SetLen(20);
 
-
-
     Vue.component('virtual-scroll-component', {
         template: pplctn.services("TemplateService").Get("app/components/virtualScrollTemplate.html"),
 

@@ -1,5 +1,7 @@
 ﻿(function () {
+
     var _index = 0;
+
     function _fn(name) {
 
         _index++;
@@ -22,15 +24,15 @@
             len: 0,
             updated: null,
             get: function () {
-                console.log("DataSourceService get", _curr.data.length);
+                //console.log("DataSourceService get", _curr.data.length);
                 return _curr.data;
             },
             set: function (data) {
                 if (_curr.data != data) {
-                    console.log("DataSourceService set ", data.length);
+                    //console.log("DataSourceService set ", data.length);
                     _curr.data = data;
                     this.len = _curr.data.length;
-                    this.updated = new Date().getTime();
+                    this.updated = new Date();
                     _onSet(data);
                 }
 
