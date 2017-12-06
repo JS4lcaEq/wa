@@ -1123,11 +1123,14 @@
     <Content Include="SPA\app\components\virtualScrollComponentV1.js" />
     <Content Include="SPA\app\components\virtualScrollComponent.js" />
     <Content Include="SPA\app\components\virtualScrollTemplate.html" />
+    <Content Include="SPA\app\components\VirtualScroll\style.css" />
+    <Content Include="SPA\app\components\VirtualScroll\virtualScrollComponent.js" />
+    <Content Include="SPA\app\components\VirtualScroll\virtualScrollTemplate.html" />
     <Content Include="SPA\app\DataSourceService.js" />
     <Content Include="SPA\app\Services\DataSourceService.js" />
     <Content Include="SPA\app\Services\WindowService.js" />
     <Content Include="SPA\app\Services\StoreService.js" />
-    <Content Include="SPA\app\TemplateService.js" />
+    <Content Include="SPA\app\Services\TemplateService.js" />
     <Content Include="SPA\app\WindowServiceV1.js" />
     <Content Include="SPA\app\WindowService.js" />
     <Content Include="SPA\app\IndexService.js" />

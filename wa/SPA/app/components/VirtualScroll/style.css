@@ -1,0 +1,43 @@
+﻿
+
+/* virtual-scroll-component */
+.virtual-scroll-component {
+    overflow: hidden;
+}
+
+.virtual-scroll-component-scroll {
+    /*background-color: #ddd;*/
+    width: 19px;
+    height: 100px;
+    float: right;
+    overflow-y: auto;
+    margin-left: -20px;
+}
+
+.virtual-scroll-component-slider {
+    height: 400px;
+}
+
+.virtual-scroll-component-list-box {
+    /*background-color: aliceblue;*/
+    overflow-y: scroll;
+}
+
+.virtual-scroll-component ul {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 300px;
+}
+
+.virtual-scroll-component li {
+    overflow: hidden;
+}
+
+.virtual-scroll-component-debug {
+    position: absolute;
+    background-color: goldenrod;
+    opacity: 0.5;
+    margin-top: 2px;
+
+}
+/* /virtual-scroll-component */
