@@ -1,18 +1,29 @@
 ﻿(function () {
-    var _options = { scroll: { base: 90, step: 30 } };
+    var _options = { itemHeight: 30, scroll: { base: 90, step: 30 } };
     var _curr = {
         elements: {},
-        scroll: { min: 0, max: 0, isFastScroll: false, isSlowScroll: false },
+        scroll: { min: 0, max: 0, isFastScroll: false, isSlowScroll: false , prev: 0},
         indexes: { start: 0, end: 0, max: 0 },
-        k: 1
+        k: 1,
+        stat: {}
 
     };
-    _curr.scroll.min = _options.scroll.base;//_options.scroll.base - _options.scroll.step;
-    _curr.scroll.max = _options.scroll.base;// _options.scroll.base + _options.scroll.step;
+    _curr.scroll.min = _options.scroll.base;
+    //_curr.scroll.min = _options.scroll.base - _options.scroll.step;
+    _curr.scroll.max = _options.scroll.base;
+    //_curr.scroll.max = _options.scroll.base + _options.scroll.step;
     var _index = 0;
 
     var _ws = window.pplctn.services("WindowService").New();
     _ws.SetLen(30);
+
+    function _addStat(scroll){
+        if (!_curr.stat[scroll]) {
+            _curr.stat[scroll] = 0;
+        }
+        _curr.stat[scroll]++;
+        //console.log("stat:",_curr.stat);
+    }
 
     Vue.component('virtual-scroll-component', {
         template: pplctn.services("TemplateService").Get("app/components/VirtualScroll/virtualScrollTemplate.html"),
@@ -51,7 +62,7 @@
                     }
                 },
                 wndw: [],
-                debug: { height: 0, calcHeight: 0, index: 0, sliderHeight: 0, dataLength: 0, k: 0}
+                debug: { height: 0, calcHeight: 0, index: 0, sliderHeight: 0, dataLength: 0, k: 0, "scroll.min": _curr.scroll.min, "stat": {}}
 
             };
         },
@@ -64,18 +75,24 @@
                 }
                 return { "display": "none" };
             }
+
+
         },
 
         methods: {
 
             onScroll: function (event) {
-
+                var cScroll = event.target.scrollTop;
+                var diff = cScroll - _curr.scroll.prev;
+                _addStat(diff);
                 var self = this;
 
+
                 if (!_curr.isFastScroll) {
-                    var cScroll = event.target.scrollTop;
+                    
 
                     if (cScroll > _curr.scroll.max) {
+                        _ws.Up();
                         _ws.Up();
                         self.wndw = _ws.Get();
                         self.debug.index = _ws.GetIndexes().start;
@@ -87,20 +104,21 @@
 
                     if (cScroll < _curr.scroll.min) {
                         _ws.Down();
+                        _ws.Down();
                         self.debug.index = _ws.GetIndexes().start;
                         self.wndw = _ws.Get();
-                        if (_ws.Debug().start > 0) {
-                            //event.target.scrollTop = cScroll + _options.scroll.step;
+                        if (_ws.GetIndexes().start > 0) {
+                            
                             _curr.isSlowScroll = true;
                             self.elements.scroll.jquery.get(0).scrollTop = _ws.GetIndexes().start * _curr.k; // _options.scroll.step;
-
+                            //event.target.scrollTop = cScroll + _options.scroll.step;
                             event.target.scrollTop = _options.scroll.base;
                         }
                     }
                 }
 
                 _curr.isFastScroll = false;
-
+                _curr.scroll.prev = cScroll;
                 return true;
             },
             onFastScroll: function (event) {
@@ -126,6 +144,10 @@
                 }
 
                 _curr.isSlowScroll = false;
+            },
+            onDebugClick: function () {
+                var self = this;
+                self.debug.stat = _curr.stat;
             }
         },
 
@@ -145,6 +167,8 @@
         created: function () {
 
             var self = this;
+
+            
 
             var _ds = pplctn.services("StoreService").Get(self.src);
 
@@ -178,7 +202,7 @@
 
         },
 
-        props: ["src", "debugMode"]
+        props: ["src", "itemHeight", "debugMode"]
 
     });
 
