@@ -1,4 +1,5 @@
 ﻿(function () {
+    // new
 
     // собирает шаблон из вложенных в директиву узлов DOM
     function concatTransEl(elements) {
@@ -214,6 +215,7 @@
                 dataSourceName: parseStringAttrToScopeDataSourceName(attrs.virtualScroll), // имя свойства scope содержащего источник данных для repeat, строка
                 ngRepeat: null // содержимое ng-repeat компилируемого шаблона, строка 
             };
+
 
             var _ds = findObjectProperty(scope, _curr.dataSourceName);
 

@@ -8,10 +8,13 @@
         stat: {}
 
     };
+
     _curr.scroll.min = _options.scroll.base;
-    //_curr.scroll.min = _options.scroll.base - _options.scroll.step;
     _curr.scroll.max = _options.scroll.base;
-    //_curr.scroll.max = _options.scroll.base + _options.scroll.step;
+
+    // _curr.scroll.max = _options.scroll.base + _options.scroll.step;
+    // _curr.scroll.min = _options.scroll.base - _options.scroll.step;
+
     var _index = 0;
 
     var _ws = window.pplctn.services("WindowService").New();
@@ -92,17 +95,21 @@
                     
 
                     if (cScroll > _curr.scroll.max) {
-                        _ws.Up();
-                        _ws.Up();
-                        self.wndw = _ws.Get();
-                        self.debug.index = _ws.GetIndexes().start;
-                        _curr.isSlowScroll = true;
-                        self.elements.scroll.jquery.get(0).scrollTop = _ws.GetIndexes().start * _curr.k; //_options.scroll.step;
+                        if (_ws.GetIndexes().start < (_ws.GetIndexes().max - 10)) {
+                            _ws.Up();
+                            _ws.Up();
+                            self.wndw = _ws.Get();
+                            self.debug.index = _ws.GetIndexes().start;
+                            _curr.isSlowScroll = true;
+                            self.elements.scroll.jquery.get(0).scrollTop = _ws.GetIndexes().start * _curr.k; //_options.scroll.step;
+                        }
+
                         //event.target.scrollTop = cScroll - _options.scroll.step;
                         event.target.scrollTop = _options.scroll.base;
                     }
 
                     if (cScroll < _curr.scroll.min) {
+                        
                         _ws.Down();
                         _ws.Down();
                         self.debug.index = _ws.GetIndexes().start;
@@ -191,13 +198,16 @@
 
                 self.debug.dataLength = data.length;
 
-                _curr.k = (sh - 400) / data.length;
+                _curr.k = (sh - 400) / (data.length - 10);
 
                 console.log("k = ", _curr.k);
 
                 self.debug.k = _curr.k;
 
                 self.elements.slider.style.height = sh + "px";
+
+                self.elements.scroll.jquery.get(0).scrollTop = _ws.GetIndexes().start * _curr.k;
+
             });
 
         },
