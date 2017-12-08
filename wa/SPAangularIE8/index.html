@@ -12,7 +12,7 @@
             data length: <input ng-model="ctrl.dataLength" />
             <button ng-click="ctrl.setData(ctrl.dataLength)">set data</button>
         </p>
-        <div virtual-scroll="item in ctrl.data" style="border: solid 1px red; height: 200px; ">
+        <div virtual-scroll="item in ctrl.data" style="border: solid 1px red; height: 100px; ">
             <span><a ng-click="ctrl.onClick(item.id)">ctrl.onClick(item.id)</a> item: "{{item}}"</span>
         </div>
         <p>

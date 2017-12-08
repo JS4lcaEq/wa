@@ -57,6 +57,23 @@
         return name;
     }
 
+    function newStat() {
+        var data = {};
+        var item = {};
+        item.add = function (val) {
+            if (!data[val]) {
+                data[val] = 0;
+            }
+            data[val]++;
+        };
+        item.get = function () {
+            return data;
+        };
+        return item;
+    }
+
+    var _stat = newStat();
+
     // контроллер директивы
     function _controller($scope, $timeout, DataService) {
 
@@ -139,31 +156,34 @@
             _c.elements.listBox.on("scroll", function (event) {
 
                 var _scroll = event.target.scrollTop;
+
+                _stat.add(_scroll);
+
                 //console.log("scroll", _scroll);
-                if (_scroll > 30) {
+                if (_scroll > 110) {
                     _c.isScroll = true;
                     $scope.$digest();
-
+                    _ds.up();
                     _ds.up();
                     _setScrollScroll();
 
 
-                        event.target.scrollTop = 30;
+                    event.target.scrollTop = 90;
 
                     
                 }
-                if (_scroll < 30) {
+                if (_scroll < 70) {
                     _c.isScroll = true;
                     _ds.down();
-  
+                    _ds.down();
                     _setScrollScroll();
                     
 
                     if (_ds.getIndex().start < 1) {
                         self.listStyle["margin-top"] = "0";
                     } else {
-                        self.listStyle["margin-top"] = "30px";
-                        event.target.scrollTop = 30;
+                        //self.listStyle["margin-top"] = "90px";
+                        event.target.scrollTop = 90;
                     }
                     $scope.$digest();
                 }
@@ -180,8 +200,7 @@
                         var index = Math.round(_scroll / _c.k);
                         _ds.setIndex(index);
                         $scope.$digest();
-                        //console.log("_curr.elements.scroll.on(scroll) index=", index, " _scroll=", _scroll);
-                    },12);
+                    },3);
 
                 }
 
@@ -201,6 +220,8 @@
                 return _ds.getIndex();
             }
         };
+
+        self.debug = { stat: _stat.get() };
 
     }
 
@@ -223,14 +244,6 @@
 
             controller.ds = _ds;
 
-            //controller.debug = {
-            //    "attrs.virtualScroll": attrs.virtualScroll,
-            //    "_curr.dataSourceName": _curr.dataSourceName,
-            //    "_curr.ngRepeat": _curr.ngRepeat
-            //    , "controller.window.getIndex()": controller.window.getIndex()
-            //};
-
-
             scope.$watch(_curr.dataSourceName, function (nwv, ldv) {
                 //console.log("scope.$watch(" + _curr.dataSourceName + ") = ", nwv.length);
                 controller.window.setData(nwv);
@@ -251,14 +264,14 @@
 
         return {
             transclude: true,
-            //templateUrl: 'virtualScrollDirectiveTemplate.html?t=1',
-            template:   '<div class="virtual-scroll-directive">'+
-                        '   <div class="virtual-scroll-scroll">'+
-                        '       <div class="virtual-scroll-slider" ng-style="virtualScrollDirectiveController.sliderStyle"></div>'+
-                        '   </div>'+
-                        '   <div class="virtual-scroll-list-box"></div>'+
-                        '   <div class="debug-box" style="display: none; position:absolute; width: 900px; height: 200px; background-color:antiquewhite; opacity: .5;">{{ virtualScrollDirectiveController.debug }}</div>'+
-                        '</div>',
+            templateUrl: "app/Directives/virtualScrollDirectiveTemplate.html?t=1",
+            //template:   '<div class="virtual-scroll-directive">'+
+            //            '   <div class="virtual-scroll-scroll">'+
+            //            '       <div class="virtual-scroll-slider" ng-style="virtualScrollDirectiveController.sliderStyle"></div>'+
+            //            '   </div>'+
+            //            '   <div class="virtual-scroll-list-box"></div>'+
+            //            '   <div class="debug-box" style="display: none; position:absolute; width: 900px; height: 200px; background-color:antiquewhite; opacity: .5;">{{ virtualScrollDirectiveController.debug }}</div>'+
+            //            '</div>',
             link: link,
             controller: _controller, //'VirtualScrollCtrl',
             controllerAs: 'virtualScrollDirectiveController'
