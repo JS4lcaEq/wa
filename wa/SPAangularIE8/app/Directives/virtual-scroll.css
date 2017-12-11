@@ -3,7 +3,7 @@
 }
 
 .virtual-scroll-directive .virtual-scroll-scroll {
-
+    
     width: 19px;
     float: right;
     overflow-y: scroll;

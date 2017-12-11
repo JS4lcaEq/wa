@@ -13,6 +13,7 @@
         }
 
         this.name = 'MainCtrl';
+        this.height = 200;
         this.data = [1,2,3];
         this.onClick = function (inp) { alert('MainCtrl onClick(' + inp + ')'); };
         this.data = generate(10000);

@@ -245,6 +245,7 @@
             controller.ds = _ds;
 
             scope.$watch(_curr.dataSourceName, function (nwv, ldv) {
+                controller.setElement(element);
                 //console.log("scope.$watch(" + _curr.dataSourceName + ") = ", nwv.length);
                 controller.window.setData(nwv);
             });

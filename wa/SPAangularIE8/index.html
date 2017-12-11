@@ -11,8 +11,9 @@
         <p>
             data length: <input ng-model="ctrl.dataLength" />
             <button ng-click="ctrl.setData(ctrl.dataLength)">set data</button>
+            height: <input ng-model="ctrl.height"/>
         </p>
-        <div virtual-scroll="item in ctrl.data" style="border: solid 1px red; height: 100px; ">
+        <div virtual-scroll="item in ctrl.data" ng-style="{'height': ctrl.height + 'px'}" style="border: solid 1px red; ">
             <span><a ng-click="ctrl.onClick(item.id)">ctrl.onClick(item.id)</a> item: "{{item}}"</span>
         </div>
         <p>
@@ -31,6 +32,8 @@
     <script src="app/Services/treeService.js"></script>
 
     <script src="app/Directives/virtualScrollDirective.js"></script>
+    <script src="app/Directives/Stat/statDirective.js"></script>
+
     <script src="app/mainController.js"></script>
     <script>angular.bootstrap("html", ['app']);</script>
 </body>

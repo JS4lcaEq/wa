@@ -1086,6 +1086,8 @@
     <Content Include="Scripts\vue.js" />
     <Content Include="SPAangularIE8\app\app.js" />
     <Content Include="SPAangularIE8\app\component.js" />
+    <Content Include="SPAangularIE8\app\Directives\Stat\statDirective.js" />
+    <Content Include="SPAangularIE8\app\Directives\Stat\statDirectiveTemplate.html" />
     <Content Include="SPAangularIE8\app\Services\treeService.js" />
     <Content Include="SPAangularIE8\app\virtualScrollController.js" />
     <Content Include="SPAangularIE8\app\mainController.js" />
