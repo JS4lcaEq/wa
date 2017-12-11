@@ -3,7 +3,8 @@
 <head>
     <meta charset="utf-8" />
     <title>Angular</title>
-    <link href="app/Directives/virtual-scroll.css" rel="stylesheet" />
+
+    <link href="app/Directives/VirtualScroll/virtualScrollDirective.css" rel="stylesheet" />
 </head>
 <body>
     <div ng-controller="MainCtrl as ctrl">
@@ -13,25 +14,29 @@
             <button ng-click="ctrl.setData(ctrl.dataLength)">set data</button>
             height: <input ng-model="ctrl.height"/>
         </p>
-        <div virtual-scroll="item in ctrl.data" ng-style="{'height': ctrl.height + 'px'}" style="border: solid 1px red; ">
-            <span><a ng-click="ctrl.onClick(item.id)">ctrl.onClick(item.id)</a> item: "{{item}}"</span>
+        <!--<ul style="height:200px; border: solid 1px red;" ui-scroll-viewport>
+            <li class="item" ui-scroll="item in ctrl.ds" style="height: 20px;">{{item}}</li>
+        </ul>-->
+        <div virtual-scroll="item in ctrl.data" style="border: solid 1px #ccc; height:200px;">
+            <span>{{item}}</span>
         </div>
-        <p>
-{{ctrl.ts.debug()}}
-        </p>
-        {{ctrl.ts.get()}}
 
+        
     </div>
-    <a href="app/Services/treeServiceTestData.json">app/Services/treeServiceTestData.json</a>
+
     <script src="lib/jquery-1.12.4.min.js"></script>
-    <script src="lib/angular.min.js"></script>
+    <!--<script src="lib/polifillAssign.js"></script>-->
+    <!--<script src="lib/angular.min.js"></script>-->
+    <script src="../Scripts/angular.min.js"></script>
     <script src="lib/angular-route.min.js"></script>
+    <!--<script src="lib/ui-scroll.js"></script>-->
+    <!--<script src="lib/ui-scroll-grid.js"></script>-->
 
     <script src="app/app.js"></script>
     <script src="app/Services/dataService.js"></script>
-    <script src="app/Services/treeService.js"></script>
+    <script src="app/Services/treeService.js_"></script>
 
-    <script src="app/Directives/virtualScrollDirective.js"></script>
+    <script src="app/Directives/VirtualScroll/virtualScrollDirective.js"></script>
     <script src="app/Directives/Stat/statDirective.js"></script>
 
     <script src="app/mainController.js"></script>

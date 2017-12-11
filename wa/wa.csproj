@@ -313,6 +313,9 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="IRS\js\jquery-3.2.1.min.map" />
+    <Content Include="IRS\js\errors.json" />
+    <Content Include="IRS\js\version.json" />
     <Content Include="Scripts\errors.json" />
     <Content Include="Scripts\angular.min.js.map" />
     <Content Include="Scripts\angular-touch.min.js.map" />
@@ -326,9 +329,6 @@
     <Content Include="Scripts\angular-cookies.min.js.map" />
     <Content Include="Scripts\angular-aria.min.js.map" />
     <Content Include="Scripts\angular-animate.min.js.map" />
-    <Content Include="IRS\js\jquery-3.2.1.min.map" />
-    <Content Include="IRS\js\errors.json" />
-    <Content Include="IRS\js\version.json" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
     <Content Include="Scripts\html5shiv.min.js" />
     <Content Include="Scripts\i18n\angular-locale_af-na.js" />
@@ -1095,14 +1095,18 @@
     <Content Include="SPAangularIE8\app\route.js" />
     <Content Include="SPAangularIE8\app\tree1Service.js" />
     <Content Include="SPAangularIE8\app\treeService.js" />
-    <Content Include="SPAangularIE8\app\Directives\virtualScrollDirective.js" />
+    <Content Include="SPAangularIE8\app\Directives\VirtualScroll\virtualScrollDirective.js" />
     <Content Include="SPAangularIE8\app\Services\dataService.js" />
     <Content Include="SPAangularIE8\index.html" />
     <Content Include="SPAangularIE8\lib\angular-route.min.js" />
     <Content Include="SPAangularIE8\lib\angular.min.js" />
     <Content Include="SPAangularIE8\lib\jquery-1.12.4.min.js" />
-    <Content Include="SPAangularIE8\app\Directives\virtual-scroll.css" />
-    <Content Include="SPAangularIE8\app\Directives\virtualScrollDirectiveTemplate.html" />
+    <Content Include="SPAangularIE8\app\Directives\VirtualScroll\virtualScrollDirective.css" />
+    <Content Include="SPAangularIE8\app\Directives\VirtualScroll\virtualScrollDirective.html" />
+    <Content Include="SPAangularIE8\lib\polifillAssign.js" />
+    <Content Include="SPAangularIE8\lib\ui-scroll-grid.js" />
+    <Content Include="SPAangularIE8\lib\ui-scroll-jqlite.js" />
+    <Content Include="SPAangularIE8\lib\ui-scroll.js" />
     <Content Include="SPAngular\app\app.js" />
     <Content Include="SPAngular\app\component.js" />
     <Content Include="SPAngular\app\mainController.js" />
@@ -1167,10 +1171,10 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="SPA\app\testData.json" />
-    <Content Include="Scripts\version.json" />
     <Content Include="SPAangularIE8\lib\angular-route.min.js.map" />
     <Content Include="SPAangularIE8\lib\angular.min.js.map" />
     <Content Include="SPAangularIE8\app\Services\treeServiceTestData.json" />
+    <Content Include="Scripts\version.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

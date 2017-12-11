@@ -1,6 +1,6 @@
 ﻿(function () {
 
-    function fn($scope, $route, TreeService//, $routeParams //, $location
+    function fn($scope, $route, $timeout//, TreeService, $routeParams //, $location
     ) {
         var self = this;
         function generate(n) {
@@ -21,19 +21,29 @@
             self.data = generate(n);
         };
 
-        this.ts = TreeService.New();
 
-        this.ts.setOnLoaded(
-            function (loadedBranch) {
-                console.log("loadedBranch: ", loadedBranch);
-            }
-        );
+        var datasource =  {};
 
-        this.ts.open("null");
-        this.ts.load(1);
-        this.ts.load(2);
+        datasource.get = function (index, count, success) {
+            $timeout(function () {
+                var result = [];
+                var _index = index;
+                if (_index < 0) {
+                    _index = 0;
+                }
+                if (_index > 100) {
+                    _index = 100;
+                }
+                for (var i = _index; i <= _index + count - 1; i++) {
+                    result.push("item #" + i);
+                }
+                success(result);
+            }, 100);
+         };
 
-        console.log("ts:", this.ts, " debug:", this.ts.debug());
+        this.ds = datasource;
+
+
 
     }
 
