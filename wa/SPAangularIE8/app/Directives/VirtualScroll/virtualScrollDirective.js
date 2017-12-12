@@ -137,7 +137,9 @@
             compileFn(scope);
             element.find(".virtual-scroll-list-box").append(transcludeElem);
 
-
+            _curr.elements.listBox.on('scroll', function (e) {
+                
+            });
         }
 
         return {
