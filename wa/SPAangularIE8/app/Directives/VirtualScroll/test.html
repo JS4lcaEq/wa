@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        html, body {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        #list {
+            width: 99%;
+            height: 100%;
+            background-color: antiquewhite;
+            display: inline-block;
+            overflow-y: scroll;
+            /*margin-right: -10px;*/
+        }
+        #list ul {
+            margin:0;
+            padding:0;
+        }
+        #scroll {
+            width: 20px;
+            height: 100%;
+            background-color: aquamarine;
+            display: inline-block;
+            margin-left: -22px;
+            overflow: auto;
+            /*z-index:10;*/
+        }
+        #slider {
+            height: 222.222%;
+        }
+    </style>
+</head>
+<body>
+    <div style="width: 50%; background-color:aliceblue; height: 50%; ">
+        <div id="list">
+            <ul>
+                <li>li</li>
+                <li>li</li>
+                <li>li</li>
+                <li>li</li>
+                <li>li</li>
+                <li>li</li>
+                <li>li</li>
+                <li>li</li>
+                <li>li</li>
+                <li>li</li>
+                <li>li</li>
+                <li>li</li>
+            </ul>
+        </div>
+        <div id="scroll">
+            <div id="slider">&nbsp;</div>
+        </div>
+    </div>
+</body>
+</html>

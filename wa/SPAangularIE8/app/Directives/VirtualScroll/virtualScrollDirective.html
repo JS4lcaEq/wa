@@ -1,10 +1,16 @@
 ﻿<div class="virtual-scroll-directive">
-    <div class="virtual-scroll-scroll">
-        <div class="virtual-scroll-slider" ng-style="virtualScrollDirectiveController.sliderStyle"></div>
-    </div>
+
     <div class="virtual-scroll-list-box"></div>
+    
+    <div class="virtual-scroll-scroll">
+        <div class="virtual-scroll-slider" ng-style="virtualScrollDirectiveController.sliderStyle">&nbsp;</div>
+    </div>
+    
+
+    
     <div class="debug-box" style="display: block; position:absolute; width: 1200px; height: 200px; background-color:antiquewhite; opacity: .8; margin-top: 2px;">
         {{virtualScrollDirectiveController.debug}}
-        <div stat-directive="virtualScrollDirectiveController.debug.stat" ></div>
+        <div stat-directive="virtualScrollDirectiveController.debug.stat" >{{virtualScrollDirectiveController.debug}}</div>
     </div>
+
 </div>

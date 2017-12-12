@@ -3,11 +3,23 @@
 <head>
     <meta charset="utf-8" />
     <title>Angular</title>
-
     <link href="app/Directives/VirtualScroll/virtualScrollDirective.css" rel="stylesheet" />
+    <style>
+        html, body {
+            height: 100%;
+            width: 100%;
+            margin:0;
+            padding:0;
+        }
+        #vsd {
+            width: 50%;
+            height: 50%;
+            border: solid 1px red;
+        }
+    </style>
 </head>
 <body>
-    <div ng-controller="MainCtrl as ctrl">
+    <div ng-controller="MainCtrl as ctrl" style="padding:20px; height: 100%;">
         <!--ctrl:{{ctrl}}| cctrl: {{cctrl}}-->
         <p>
             data length: <input ng-model="ctrl.dataLength" />
@@ -17,7 +29,7 @@
         <!--<ul style="height:200px; border: solid 1px red;" ui-scroll-viewport>
             <li class="item" ui-scroll="item in ctrl.ds" style="height: 20px;">{{item}}</li>
         </ul>-->
-        <div virtual-scroll="item in ctrl.data" style="border: solid 1px #ccc; height:200px;">
+        <div id="vsd" virtual-scroll="item in ctrl.data">
             <span>{{item}}</span>
         </div>
 
@@ -26,8 +38,8 @@
 
     <script src="lib/jquery-1.12.4.min.js"></script>
     <!--<script src="lib/polifillAssign.js"></script>-->
-    <!--<script src="lib/angular.min.js"></script>-->
-    <script src="../Scripts/angular.min.js"></script>
+    <script src="lib/angular.min.js"></script>
+    <!--<script src="../Scripts/angular.min.js"></script>-->
     <script src="lib/angular-route.min.js"></script>
     <!--<script src="lib/ui-scroll.js"></script>-->
     <!--<script src="lib/ui-scroll-grid.js"></script>-->

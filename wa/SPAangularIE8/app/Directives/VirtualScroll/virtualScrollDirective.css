@@ -1,24 +1,37 @@
-﻿.virtual-scroll-directive .virtual-scroll-list-box {
-    overflow-y: scroll;
-    height: 100px;
+﻿.virtual-scroll-directive {
+    overflow: hidden;
+    height: 100%;
 }
 
-.virtual-scroll-directive .virtual-scroll-scroll {
-    height:100px;
-    width: 19px;
-    float: right;
+.virtual-scroll-directive .virtual-scroll-list-box {
     overflow-y: scroll;
-    margin-left: -19px;
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+    /*margin-left: 10px;*/
+    /*background-color:antiquewhite;*/
 }
 
-.virtual-scroll-directive ul {
-    margin: 0;
+.virtual-scroll-directive .virtual-scroll-list-box ul {
     padding: 0;
-    margin-bottom: 1000px;
-    margin-top: 30px;
-    height: 100px;
+    margin: 100px 0 ;
 }
+
+    .virtual-scroll-directive .virtual-scroll-scroll {
+        height: 100%;
+        width: 25px;
+        /*float: right;*/
+        display: inline-block;
+        overflow-y: scroll;
+        margin-left: -29px;
+    }
+
+    .virtual-scroll-directive .virtual-scroll-slider {
+        height: 10000%;
+    }
 
 .virtual-scroll-directive li {
    overflow:hidden;
+   height: 25px;
 }

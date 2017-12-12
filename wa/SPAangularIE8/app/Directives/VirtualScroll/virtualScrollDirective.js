@@ -80,7 +80,7 @@
 
         var self = this;
         self.ds = DataService.New();
-
+        self.liStyle = { "height": "30px" };
 
     }
 
@@ -91,7 +91,7 @@
             var _curr = {
 
                 // html внутри директивы (transclude), строка
-                trnscld: null,  
+                trnscld: null,
 
                 // имя свойства scope содержащего источник данных для repeat, строка
                 dataSourceName: parseStringAttrToScopeDataSourceName(attrs.virtualScroll),
@@ -114,7 +114,7 @@
                 _curr.elements.listBox.height(height);
             }
 
-            _setHeight();
+            //_setHeight();
 
             _curr.ngRepeat = attrs.virtualScroll.replace(_curr.dataSourceName, "virtualScrollDirectiveController.ds.get()");
 
@@ -137,9 +137,75 @@
             compileFn(scope);
             element.find(".virtual-scroll-list-box").append(transcludeElem);
 
-            _curr.elements.listBox.on('scroll', function (e) {
+            element.find(".virtual-scroll-list-box").on('scroll', function (event) {
+                var _scroll = event.target.scrollTop - 100;
+                
+                if (event.target.scrollTop > 100) {
+                    controller.debug = _scroll;
+                    if (_scroll < 10) {
+                        controller.ds.up();
+                        controller.ds.up();
+                        event.target.scrollTop = 100;
+                        controller.liStyle.height = 25 + "px";
+                    } else if (_scroll < 20) {
+                        controller.ds.up();
+                        event.target.scrollTop = 100;
+                        controller.liStyle.height = 20 + "px";
+                    } else if (_scroll < 40) {
+                        controller.ds.up();
+                        controller.ds.up();
+                        event.target.scrollTop = 100;
+                        controller.liStyle.height = _scroll + "px";
+                    } else if (_scroll < 60) {
+                        controller.ds.up();
+                        controller.ds.up();
+                        event.target.scrollTop = 100;
+                        controller.liStyle.height = _scroll / 2 + "px";
+                    } else {
+                        controller.ds.up();
+                        controller.ds.up();
+                        event.target.scrollTop = 100;
+                        controller.liStyle.height = _scroll / 3 + "px";
+                    }
+                    scope.$apply();
+                }
+                if (event.target.scrollTop < 100) {
+
+                    controller.debug = _scroll;
+                    //controller.ds.down();
+                    //event.target.scrollTop = 100;
+
+                    //controller.debug = _scroll;
+                    if (_scroll > -60) {
+                        controller.ds.down();
+                        controller.ds.down();
+                        event.target.scrollTop = 100;
+                        controller.liStyle.height = _scroll / 3 + "px";
+                    } 
+                    else if (_scroll > -40) {
+                        controller.ds.down();
+                        controller.ds.down();
+                        event.target.scrollTop = 100;
+                        controller.liStyle.height = _scroll + "px";
+                    } 
+                    //else if (_scroll > -60) {
+                    //    controller.ds.up();
+                    //    controller.ds.up();
+                    //    event.target.scrollTop = 100;
+                    //    controller.liStyle.height = _scroll / 2 + "px";
+                    //} 
+                    //else {
+                    //    controller.ds.up();
+                    //    controller.ds.up();
+                    //    event.target.scrollTop = 100;
+                    //    controller.liStyle.height = _scroll / 3 + "px";
+                    //}
+
+                    scope.$apply();
+                }
                 
             });
+            element.find(".virtual-scroll-list-box").get(0).scrollTop = 100;
         }
 
         return {
