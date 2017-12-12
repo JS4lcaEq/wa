@@ -33,5 +33,6 @@
 
 .virtual-scroll-directive li {
    overflow:hidden;
+   width: 100%;
    height: 25px;
 }

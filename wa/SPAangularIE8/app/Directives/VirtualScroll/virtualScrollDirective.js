@@ -76,15 +76,15 @@
     var _stat = newStat();
 
     // контроллер директивы
-    function _controller($scope, $timeout, DataService) {
+    function _controller($scope, DataService) {
 
         var self = this;
         self.ds = DataService.New();
-        self.liStyle = { "height": "30px" };
+        self.liStyle = {  };
 
     }
 
-    function fn($compile) {
+    function fn($compile, $timeout) {
 
         function link(scope, element, attrs, controller, transclude) {
 
@@ -108,13 +108,28 @@
                 }
             };
 
-            function _setHeight() {
-                var height = element.height();
-                _curr.elements.scroll.height(height);
-                _curr.elements.listBox.height(height);
+            function _setLineHeight(scroll) {
+                var _scroll = Math.abs(scroll - 100);
+                //if (scroll > 100) {
+                controller.debug = { abs: _scroll , scroll: scroll};
+                    if (_scroll < 10) {
+                        controller.liStyle.height = 25 + "px";
+                    } else if (_scroll < 20) {
+                        controller.liStyle.height = 20 + "px";
+                    } else if (_scroll < 40) {
+                        controller.liStyle.height = _scroll + "px";
+                    } else if (_scroll < 60) {
+                        controller.liStyle.height = _scroll / 2 + "px";
+                    } else {
+
+                        controller.liStyle.height = _scroll / 3 + "px";
+                    }
+                //}
             }
 
-            //_setHeight();
+
+
+
 
             _curr.ngRepeat = attrs.virtualScroll.replace(_curr.dataSourceName, "virtualScrollDirectiveController.ds.get()");
 
@@ -125,6 +140,7 @@
             scope.$watch(_curr.dataSource, function () {
                 console.log(" $watch dataSource !!!");
                 controller.ds.setData(_curr.dataSource);
+                element.find(".virtual-scroll-list-box").get(0).scrollTop = 100;
             });
 
             transclude(scope, function (clone, scp) {
@@ -138,74 +154,31 @@
             element.find(".virtual-scroll-list-box").append(transcludeElem);
 
             element.find(".virtual-scroll-list-box").on('scroll', function (event) {
-                var _scroll = event.target.scrollTop - 100;
-                
+
+
                 if (event.target.scrollTop > 100) {
-                    controller.debug = _scroll;
-                    if (_scroll < 10) {
-                        controller.ds.up();
-                        controller.ds.up();
-                        event.target.scrollTop = 100;
-                        controller.liStyle.height = 25 + "px";
-                    } else if (_scroll < 20) {
-                        controller.ds.up();
-                        event.target.scrollTop = 100;
-                        controller.liStyle.height = 20 + "px";
-                    } else if (_scroll < 40) {
-                        controller.ds.up();
-                        controller.ds.up();
-                        event.target.scrollTop = 100;
-                        controller.liStyle.height = _scroll + "px";
-                    } else if (_scroll < 60) {
-                        controller.ds.up();
-                        controller.ds.up();
-                        event.target.scrollTop = 100;
-                        controller.liStyle.height = _scroll / 2 + "px";
-                    } else {
-                        controller.ds.up();
-                        controller.ds.up();
-                        event.target.scrollTop = 100;
-                        controller.liStyle.height = _scroll / 3 + "px";
-                    }
+                    //_setLineHeight(event.target.scrollTop);
+                    controller.ds.up();
+                    controller.ds.up();
+                    event.target.scrollTop = 100;
                     scope.$apply();
                 }
                 if (event.target.scrollTop < 100) {
-
-                    controller.debug = _scroll;
-                    //controller.ds.down();
-                    //event.target.scrollTop = 100;
-
-                    //controller.debug = _scroll;
-                    if (_scroll > -60) {
-                        controller.ds.down();
-                        controller.ds.down();
-                        event.target.scrollTop = 100;
-                        controller.liStyle.height = _scroll / 3 + "px";
-                    } 
-                    else if (_scroll > -40) {
-                        controller.ds.down();
-                        controller.ds.down();
-                        event.target.scrollTop = 100;
-                        controller.liStyle.height = _scroll + "px";
-                    } 
-                    //else if (_scroll > -60) {
-                    //    controller.ds.up();
-                    //    controller.ds.up();
-                    //    event.target.scrollTop = 100;
-                    //    controller.liStyle.height = _scroll / 2 + "px";
-                    //} 
-                    //else {
-                    //    controller.ds.up();
-                    //    controller.ds.up();
-                    //    event.target.scrollTop = 100;
-                    //    controller.liStyle.height = _scroll / 3 + "px";
-                    //}
-
+                    //_setLineHeight(event.target.scrollTop);
+                    controller.ds.down();
+                    controller.ds.down();
+                    event.target.scrollTop = 100;
                     scope.$apply();
                 }
-                
+
             });
-            element.find(".virtual-scroll-list-box").get(0).scrollTop = 100;
+
+
+            $timeout(function () {
+                element.find(".virtual-scroll-list-box").get(0).scrollTop = 100;
+            }, 10);
+            
+
         }
 
         return {
@@ -217,6 +190,6 @@
         };
     }
 
-    angular.module('app').directive('virtualScroll', ['$compile', "DataService", fn]);
+    angular.module('app').directive('virtualScroll', ['$compile', "$interval", "DataService", fn]);
 
 })();
