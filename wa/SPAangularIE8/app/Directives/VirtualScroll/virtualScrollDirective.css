@@ -16,6 +16,7 @@
 .virtual-scroll-directive .virtual-scroll-list-box ul {
     padding: 0;
     margin: 100px 0 ;
+    height: 100%;
 }
 
     .virtual-scroll-directive .virtual-scroll-scroll {

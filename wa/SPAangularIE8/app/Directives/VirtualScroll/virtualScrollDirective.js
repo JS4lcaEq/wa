@@ -80,7 +80,8 @@
 
         var self = this;
         self.ds = DataService.New();
-        self.liStyle = {  };
+        self.liStyle = {};
+        self.debug = {};
 
     }
 
@@ -104,44 +105,49 @@
 
                 elements: {
                     scroll: element.find(".virtual-scroll-scroll"),
+                    slider: element.find(".virtual-scroll-slider"),
                     listBox: element.find(".virtual-scroll-list-box")
                 }
             };
 
             function _setLineHeight(scroll) {
                 var _scroll = Math.abs(scroll - 100);
-                //if (scroll > 100) {
-                controller.debug = { abs: _scroll , scroll: scroll};
-                    if (_scroll < 10) {
-                        controller.liStyle.height = 25 + "px";
-                    } else if (_scroll < 20) {
-                        controller.liStyle.height = 20 + "px";
-                    } else if (_scroll < 40) {
-                        controller.liStyle.height = _scroll + "px";
-                    } else if (_scroll < 60) {
-                        controller.liStyle.height = _scroll / 2 + "px";
-                    } else {
+                controller.debug = { abs: _scroll, scroll: scroll };
+                if (_scroll < 10) {
+                    controller.liStyle.height = 25 + "px";
+                } else if (_scroll < 20) {
+                    controller.liStyle.height = 20 + "px";
+                } else if (_scroll < 40) {
+                    controller.liStyle.height = _scroll + "px";
+                } else if (_scroll < 60) {
+                    controller.liStyle.height = _scroll / 2 + "px";
+                } else {
 
-                        controller.liStyle.height = _scroll / 3 + "px";
-                    }
-                //}
+                    controller.liStyle.height = _scroll / 3 + "px";
+                }
             }
 
 
-
+            function _setScroll() {
+                var indexes = controller.ds.getIndex();
+                var k = indexes.start / indexes.max;
+                var h = k * _curr.elements.slider.height();//element.find(".virtual-scroll-slider").height();
+                _curr.elements.scroll.get(0).scrollTop = h;//element.find(".virtual-scroll-scroll").get(0).scrollTop = h;
+            }
 
 
             _curr.ngRepeat = attrs.virtualScroll.replace(_curr.dataSourceName, "virtualScrollDirectiveController.ds.get()");
 
             scope.$watch(_curr.dataSourceName, function (nwv, ldv) {
                 console.log("$watch '" + _curr.dataSourceName + "' length = ", nwv.length);
+                controller.ds.setData(nwv);
             });
 
-            scope.$watch(_curr.dataSource, function () {
-                console.log(" $watch dataSource !!!");
-                controller.ds.setData(_curr.dataSource);
-                element.find(".virtual-scroll-list-box").get(0).scrollTop = 100;
-            });
+            //scope.$watch(_curr.dataSource, function () {
+            //    console.log(" $watch dataSource !!!" + "' length = ", _curr.dataSource.length);
+                
+
+            //});
 
             transclude(scope, function (clone, scp) {
                 _curr.trnscld = concatTransEl(clone);
@@ -155,29 +161,41 @@
 
             element.find(".virtual-scroll-list-box").on('scroll', function (event) {
 
-
+                event.originalEvent.preventDefault();
+                event.originalEvent.stopPropagation();
+                event.originalEvent.stopImmediatePropagation();
                 if (event.target.scrollTop > 100) {
                     //_setLineHeight(event.target.scrollTop);
+                    controller.debug.up = event.target.scrollTop;
                     controller.ds.up();
-                    controller.ds.up();
+                    //controller.ds.up();
+                    //controller.ds.up();
+                    controller.debug.index = controller.ds.getIndex();
+                    
                     event.target.scrollTop = 100;
+                    _setScroll();
                     scope.$apply();
+                    return;
                 }
                 if (event.target.scrollTop < 100) {
                     //_setLineHeight(event.target.scrollTop);
+                    controller.debug.down = event.target.scrollTop;
                     controller.ds.down();
-                    controller.ds.down();
+                    controller.debug.index = controller.ds.getIndex();
+                    //controller.ds.down();
                     event.target.scrollTop = 100;
+                    _setScroll();
                     scope.$apply();
+                    return;
                 }
 
             });
 
 
             $timeout(function () {
-                element.find(".virtual-scroll-list-box").get(0).scrollTop = 100;
-            }, 10);
-            
+                _curr.elements.listBox.get(0).scrollTop = 100;
+            }, 100);
+
 
         }
 
@@ -190,6 +208,6 @@
         };
     }
 
-    angular.module('app').directive('virtualScroll', ['$compile', "$interval", "DataService", fn]);
+    angular.module('app').directive('virtualScroll', ['$compile', "$timeout", "DataService", fn]);
 
 })();
