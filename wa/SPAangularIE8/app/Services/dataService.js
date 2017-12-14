@@ -8,24 +8,30 @@
             var _curr = { name: "DataService item[" + _index + "]", data: [], window: [], indexes: {start: 0, end: 0, max: 0}, winLength: 20 };
             var _wndw = [];
             function _setIndexes(startIndex) {
+
                 if (startIndex != undefined) {
                     _curr.indexes.start = startIndex;
                     if (_curr.indexes.start < 0) {
                         _curr.indexes.start = 0;
                     }
                 }
+
                 if (_curr.indexes.start > _curr.indexes.max) {
                     _curr.indexes.start = _curr.indexes.max;
                 }
 
                 _curr.indexes.end = _curr.indexes.start + _curr.winLength;
+
                 if (_curr.indexes.end > _curr.indexes.max) {
                     _curr.indexes.end = _curr.indexes.max;
                 }
+
                 var _w = [];
+
                 for (var i = _curr.indexes.start; i <= _curr.indexes.end; i++) {
                     _w.push(_curr.data[i]);
                 }
+
                 _curr.window.length = 0;
                 _wndw = _w;
 

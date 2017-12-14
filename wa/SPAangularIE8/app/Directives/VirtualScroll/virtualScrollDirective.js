@@ -107,7 +107,11 @@
                     scroll: element.find(".virtual-scroll-scroll"),
                     slider: element.find(".virtual-scroll-slider"),
                     listBox: element.find(".virtual-scroll-list-box")
-                }
+                },
+
+                flags: { isScroll: { slow: false, fast: false } },
+
+                timer: null
             };
 
             function _setLineHeight(scroll) {
@@ -131,8 +135,9 @@
             function _setScroll() {
                 var indexes = controller.ds.getIndex();
                 var k = indexes.start / indexes.max;
-                var h = k * _curr.elements.slider.height();//element.find(".virtual-scroll-slider").height();
-                _curr.elements.scroll.get(0).scrollTop = h;//element.find(".virtual-scroll-scroll").get(0).scrollTop = h;
+                var h = k * _curr.elements.slider.height();
+                _curr.flags.isScroll.slow = true;
+                _curr.elements.scroll.get(0).scrollTop = h;
             }
 
 
@@ -141,12 +146,11 @@
             scope.$watch(_curr.dataSourceName, function (nwv, ldv) {
                 console.log("$watch '" + _curr.dataSourceName + "' length = ", nwv.length);
                 controller.ds.setData(nwv);
+                _setScroll();
             });
 
             //scope.$watch(_curr.dataSource, function () {
             //    console.log(" $watch dataSource !!!" + "' length = ", _curr.dataSource.length);
-                
-
             //});
 
             transclude(scope, function (clone, scp) {
@@ -168,10 +172,8 @@
                     //_setLineHeight(event.target.scrollTop);
                     controller.debug.up = event.target.scrollTop;
                     controller.ds.up();
-                    //controller.ds.up();
-                    //controller.ds.up();
+                    controller.ds.up();
                     controller.debug.index = controller.ds.getIndex();
-                    
                     event.target.scrollTop = 100;
                     _setScroll();
                     scope.$apply();
@@ -181,8 +183,8 @@
                     //_setLineHeight(event.target.scrollTop);
                     controller.debug.down = event.target.scrollTop;
                     controller.ds.down();
+                    controller.ds.down();
                     controller.debug.index = controller.ds.getIndex();
-                    //controller.ds.down();
                     event.target.scrollTop = 100;
                     _setScroll();
                     scope.$apply();
@@ -191,11 +193,35 @@
 
             });
 
+            element.find(".virtual-scroll-scroll").on("scroll", function (event) {
+                if (!_curr.flags.isScroll.slow) {
+
+                    if (_curr.timer) {
+                        $timeout.cancel(_curr.timer);
+                    }
+
+                    _curr.timer = $timeout(function () {
+                        var scroll = event.target.scrollTop;
+                        var indexes = controller.ds.getIndex();
+                        var k = scroll / _curr.elements.slider.height();
+                        var index = Math.round(indexes.max * scroll / (_curr.elements.slider.height() - _curr.elements.scroll.height()));
+                        controller.ds.setIndex(index);
+                        controller.debug.calcIndex = index;
+                        controller.debug.fastScroll = scroll;
+                        controller.debug.sliderH = _curr.elements.slider.height();
+                        controller.debug.scrollH = _curr.elements.scroll.height(); 
+                        scope.$apply();
+                    }, 10);
+
+                }
+
+                _curr.flags.isScroll.slow = false;
+            });
+
 
             $timeout(function () {
                 _curr.elements.listBox.get(0).scrollTop = 100;
             }, 100);
-
 
         }
 
