@@ -1105,6 +1105,7 @@
     <Content Include="SPAangularIE8\app\Directives\VirtualScroll\virtualScrollDirective.css" />
     <Content Include="SPAangularIE8\app\Directives\VirtualScroll\virtualScrollDirective.html" />
     <Content Include="SPAangularIE8\lib\polifillAssign.js" />
+    <Content Include="SPAangularIE8\lib\PolifillWheelEvent.js" />
     <Content Include="SPAangularIE8\lib\ui-scroll-grid.js" />
     <Content Include="SPAangularIE8\lib\ui-scroll-jqlite.js" />
     <Content Include="SPAangularIE8\lib\ui-scroll.js" />

@@ -12,11 +12,12 @@
             return ret;
         }
 
+        this.dataLength = 100;
         this.name = 'MainCtrl';
         this.height = 200;
         this.data = [1,2,3];
         this.onClick = function (inp) { alert('MainCtrl onClick(' + inp + ')'); };
-        this.data = generate(10000);
+        this.data = generate(this.dataLength);
         this.setData = function (n) {
             self.data = generate(n);
         };

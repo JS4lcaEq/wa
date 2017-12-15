@@ -3,7 +3,6 @@
 <head>
     <meta charset="utf-8" />
     <title>Angular</title>
-    <link href="app/Directives/VirtualScroll/virtualScrollDirective.css" rel="stylesheet" />
     <style>
         html, body {
             height: 100%;
@@ -24,18 +23,16 @@
         <p>
             data length: <input ng-model="ctrl.dataLength" />
             <button ng-click="ctrl.setData(ctrl.dataLength)">set data</button>
-            height: <input ng-model="ctrl.height"/>
+
         </p>
-        <!--<ul style="height:200px; border: solid 1px red;" ui-scroll-viewport>
-            <li class="item" ui-scroll="item in ctrl.ds" style="height: 20px;">{{item}}</li>
-        </ul>-->
-        <div id="vsd" virtual-scroll="item in ctrl.data">
+
+        <div id="vsd" virtual-scroll="item in ctrl.data" line-height="25" debug-mode="false">
             <span>{{item}}</span>
         </div>
 
         
     </div>
-
+    <script src="lib/PolifillWheelEvent.js"></script>
     <script src="lib/jquery-1.12.4.min.js"></script>
     <!--<script src="lib/polifillAssign.js"></script>-->
     <script src="lib/angular.min.js"></script>
@@ -46,7 +43,7 @@
 
     <script src="app/app.js"></script>
     <script src="app/Services/dataService.js"></script>
-    <script src="app/Services/treeService.js_"></script>
+    <!--<script src="app/Services/treeService.js"></script>-->
 
     <script src="app/Directives/VirtualScroll/virtualScrollDirective.js"></script>
     <script src="app/Directives/Stat/statDirective.js"></script>

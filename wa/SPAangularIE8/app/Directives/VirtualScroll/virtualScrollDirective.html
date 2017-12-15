@@ -3,12 +3,15 @@
     <div class="virtual-scroll-list-box"></div>
     
     <div class="virtual-scroll-scroll">
-        <div class="virtual-scroll-slider" ng-style="virtualScrollDirectiveController.sliderStyle">&nbsp;</div>
+        <div class="virtual-scroll-slider" ng-style="virtualScrollDirectiveController.sliderStyle">
+            &nbsp;
+        </div>
+        <div class="virtual-scroll-spacer">
+            &nbsp;
+        </div>
     </div>
     
-
-    
-    <div class="debug-box" style="display: block; position:absolute; width: 1200px; height: 200px; background-color:antiquewhite; opacity: .8; margin-top: 2px;">
+    <div class="virtual-scroll-debug" ng-if="virtualScrollDirectiveController.isDebugMode">
         {{virtualScrollDirectiveController.debug}}
         <div stat-directive="virtualScrollDirectiveController.debug.stat" >{{virtualScrollDirectiveController.debug}}</div>
     </div>

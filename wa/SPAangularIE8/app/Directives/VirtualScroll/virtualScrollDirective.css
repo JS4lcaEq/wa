@@ -3,38 +3,48 @@
     height: 100%;
 }
 
-.virtual-scroll-directive .virtual-scroll-list-box {
-    overflow-y: scroll;
-    display: inline-block;
-    height: 100%;
-    width: 100%;
-    overflow-x: hidden;
-    /*margin-left: 10px;*/
-    /*background-color:antiquewhite;*/
-}
+    .virtual-scroll-directive .virtual-scroll-list-box {
+        overflow-y: auto;
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        overflow-x: hidden;
+    }
 
-.virtual-scroll-directive .virtual-scroll-list-box ul {
-    padding: 0;
-    margin: 1px 0 ;
-    height: 100%;
-    overflow:hidden;
-}
+        .virtual-scroll-directive .virtual-scroll-list-box ul {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            overflow: hidden;
+        }
 
     .virtual-scroll-directive .virtual-scroll-scroll {
         height: 100%;
         width: 25px;
-        /*float: right;*/
         display: inline-block;
         overflow-y: scroll;
         margin-left: -29px;
+        /*background-color: #eee;*/
     }
 
     .virtual-scroll-directive .virtual-scroll-slider {
         height: 10000%;
     }
 
-.virtual-scroll-directive li {
-   overflow:hidden;
-   width: 100%;
-   height: 25px;
-}
+    .virtual-scroll-directive li {
+        overflow: hidden;
+        width: 100%;
+        /*height: 25px;*/
+    }
+
+    .virtual-scroll-directive .virtual-scroll-spacer {
+        height: 100%;
+    }
+
+    .virtual-scroll-directive .virtual-scroll-debug {
+        display: block;
+        position: absolute;
+        background-color: antiquewhite;
+        opacity: .8;
+        margin-top: 2px;
+    }
