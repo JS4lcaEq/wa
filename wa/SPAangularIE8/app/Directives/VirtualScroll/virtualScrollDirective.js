@@ -199,9 +199,6 @@
                 controller.isDebugMode = _curr.isDebugMode;
             });
 
-            //scope.$watch(_curr.dataSource, function () {
-            //    console.log(" $watch dataSource !!!" + "' length = ", _curr.dataSource.length);
-            //});
 
             transclude(scope, function (clone, scp) {
                 _curr.trnscld = concatTransEl(clone);
@@ -239,9 +236,70 @@
             });
 
             addWheelListener(element.find(".virtual-scroll-list-box").get(0), function (e) {
-                var delta = e.deltaY;
-                //console.log("addWheelListener", );
+
+                //var isEoriginalEvent = false;
+                //var isEpreventDefault = false;
+                //var isEstopPropagation = false;
+                //var isEoriginalEventStopPropagation = false;
+                //var isEoriginalEventPreventDefault = false;
+
+
+                //if (e.originalEvent) {
+                //    isEoriginalEvent = e.originalEvent;
+                //    e.originalEvent.returnValue = false;
+                //    if (e.originalEvent.stopPropagation) {
+                //        isEoriginalEventStopPropagation = true;
+                //    }
+                //    if (e.originalEvent.preventDefault) {
+                //        isEoriginalEventPreventDefault = e.originalEvent.preventDefault;
+                //    }
+                //}
+
+                
+
+                //if (e.preventDefault) {
+                //    isEpreventDefault = true;
+                //}
+
+                
+
+                //if (e.stopPropagation) {
+                //    isEstopPropagation = true;
+                //}
+
+                
+
+
+
+                //console.log(
+                //    "isEoriginalEvent=", isEoriginalEvent,
+                //    " isEpreventDefault=", isEpreventDefault,
+                //    " isEstopPropagation=", isEstopPropagation,
+                //    " isEoriginalEventStopPropagation = ", isEoriginalEventStopPropagation,
+                //    " isEoriginalEventPreventDefault=", isEoriginalEventPreventDefault
+                //);
+
                 e.preventDefault();
+
+                if (e.stopPropagation) {
+                    e.stopPropagation(); // firefox
+                } else {
+                    if (e.originalEvent) {
+                        if (e.originalEvent.stopPropagation) {
+                            e.originalEvent.stopPropagation(); // IE
+                        }
+                        if (e.originalEvent.preventDefault) {
+                            e.originalEvent.preventDefault();
+                        }
+                    } else {
+                        e.originalEvent.returnValue = false;  // IE8
+                    }
+                }
+
+                var delta = e.deltaY;
+
+                //console.log("addWheelListener", delta, new Date());
+                
                 if (delta > 0) {
                     controller.ds.up();
                     controller.ds.up();
@@ -256,7 +314,7 @@
                     _setScroll();
                     scope.$apply();
                 }
-
+                return null;
             });
 
             var sl = $("#virtualScrollDirectiveStyleLink");
