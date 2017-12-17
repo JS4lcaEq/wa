@@ -1,6 +1,6 @@
 ﻿(function () {
 
-    function fn($scope, $route, $timeout//, TreeService, $routeParams //, $location
+    function fn($scope, $route, $timeout, TreeService//, $routeParams //, $location
     ) {
         var self = this;
         function generate(n) {
@@ -15,7 +15,8 @@
         this.dataLength = 100;
         this.name = 'MainCtrl';
         this.height = 200;
-        this.data = [1,2,3];
+        this.data = [1, 2, 3];
+        this.tree
         this.onClick = function (inp) { alert('MainCtrl onClick(' + inp + ')'); };
         this.data = generate(this.dataLength);
         this.setData = function (n) {

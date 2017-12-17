@@ -243,7 +243,6 @@
                 //var isEoriginalEventStopPropagation = false;
                 //var isEoriginalEventPreventDefault = false;
 
-
                 //if (e.originalEvent) {
                 //    isEoriginalEvent = e.originalEvent;
                 //    e.originalEvent.returnValue = false;
@@ -255,21 +254,13 @@
                 //    }
                 //}
 
-                
-
                 //if (e.preventDefault) {
                 //    isEpreventDefault = true;
                 //}
 
-                
-
                 //if (e.stopPropagation) {
                 //    isEstopPropagation = true;
                 //}
-
-                
-
-
 
                 //console.log(
                 //    "isEoriginalEvent=", isEoriginalEvent,
