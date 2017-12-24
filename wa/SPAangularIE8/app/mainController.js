@@ -12,6 +12,8 @@
             return ret;
         }
 
+        this.pageLength = 20;
+        this.index = 0;
         this.dataLength = 100;
         this.name = 'MainCtrl';
         this.height = 200;

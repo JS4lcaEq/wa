@@ -184,19 +184,29 @@
 
             scope.$watch(attrs.lineHeight, function (nv, ov) {
                 //console.log("$watch attrs.lineHeight", nv, ov);
-                if (nv && nv != undefined) {
+                if ($.isNumeric(nv)) {
                     _curr.visibleLineHeight = nv - 0;
-                    controller.liStyle = { "height": _curr.visibleLineHeight + "px"};
+                    controller.liStyle = { "height": _curr.visibleLineHeight + "px", "line-height": _curr.visibleLineHeight + "px"};
                 }
             });
 
             scope.$watch(attrs.debugMode, function (nv, ov) {
-                if (nv && nv == "true") {
+                if (nv == true || nv == "true") {
                     _curr.isDebugMode = true;
                 } else {
                     _curr.isDebugMode = false;
                 }
                 controller.isDebugMode = _curr.isDebugMode;
+            });
+
+            scope.$watch(attrs.setIndex, function (nv, ov) {
+                if ($.isNumeric(nv)) {
+                    //console.log("scope.$watch attrs.setIndex = ", nv, ov);
+                    controller.ds.setIndex(nv - 0);
+                    _setScroll();
+                }
+
+                //scope.$apply();
             });
 
 
@@ -220,7 +230,6 @@
                     _curr.timer = $timeout(function () {
                         var scroll = event.target.scrollTop;
                         var indexes = controller.ds.getIndex();
-                        //var k = scroll / _curr.elements.slider.height();
                         var index = Math.round(scroll / _curr.lineHeight);
                         controller.ds.setIndex(index);
                         controller.debug.calcIndex = index;
@@ -294,14 +303,12 @@
                 if (delta > 0) {
                     controller.ds.up();
                     controller.ds.up();
-                    controller.debug.index = controller.ds.getIndex();
                     _setScroll();
                     scope.$apply();                  
                 }
                 if (delta < 0) {
                     controller.ds.down();
                     controller.ds.down();
-                    controller.debug.index = controller.ds.getIndex();
                     _setScroll();
                     scope.$apply();
                 }

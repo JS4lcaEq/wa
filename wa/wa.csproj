@@ -1088,6 +1088,10 @@
     <Content Include="SPAangularIE8\app\component.js" />
     <Content Include="SPAangularIE8\app\Directives\Stat\statDirective.js" />
     <Content Include="SPAangularIE8\app\Directives\Stat\statDirectiveTemplate.html" />
+    <Content Include="SPAangularIE8\app\Directives\Pager\test.html" />
+    <Content Include="SPAangularIE8\app\Directives\Pager\pagerDirective.css" />
+    <Content Include="SPAangularIE8\app\Directives\Pager\pagerDirective.html" />
+    <Content Include="SPAangularIE8\app\Directives\Pager\pagerDirective.js" />
     <Content Include="SPAangularIE8\app\Directives\VirtualScroll\test.html" />
     <Content Include="SPAangularIE8\app\Services\treeService.js" />
     <Content Include="SPAangularIE8\app\virtualScrollController.js" />
