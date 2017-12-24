@@ -4,8 +4,8 @@
 
         function link(scope, element, attrs) {
 
-            scope.pages = [];
-            scope.currentPage = 0;
+            scope.pages = [];      // массив отображаемых страниц
+            scope.currentPage = 0; // текущая страница
 
             var _curr = {
                 maxPage: 0,     // максимальный index страницы
@@ -14,23 +14,20 @@
                 dataLength: 0,  // всего записей
                 currentPage: 0, // текущая страница
                 pageData: [],   // данные страницы
-                indexes: { start: 0, end: 0, max: 0 },
-                pageIndexes: { start: 0, end: 0 },
-                pageRange: 4
+                pageDataIndexes: { start: 0, end: 0, max: 0 }, // индексы записей для включения в страницу
+                pageIndexes: { start: 0, end: 0 },             // индексы отображаемых в пейджере страниц
+                pageRange: 4    // интервал отображения страниц
             };
 
             function _setPageData() {
-
-                //console.log("scope.pageData", scope.pageData);
                 var pd = [];
-                for (var i = _curr.indexes.start; i <= _curr.indexes.end; i++) {
+                for (var i = _curr.pageDataIndexes.start; i <= _curr.pageDataIndexes.end; i++) {
                     pd.push(scope.inpData[i]);
                 }
                 scope.pageData = pd;
-
             }
 
-            function _setPages() {
+            function _setPagesArray() {
                 var p = [];
                 for (var i = _curr.pageIndexes.start; i <= _curr.pageIndexes.end; i++){
                     p.push(i);
@@ -38,17 +35,7 @@
                 scope.pages = p;
             }
 
-            function _calc() {
-                _curr.indexes.max = _curr.dataLength - 1;
-                _curr.pageCount = Math.ceil(_curr.dataLength / _curr.pageLength);
-                _curr.maxPage = _curr.pageCount - 1;
-
-                if (_curr.currentPage > _curr.maxPage) {
-                    _curr.currentPage = _curr.maxPage;
-                }
-
-                scope.currentPage = _curr.currentPage;
-
+            function _setPageIndexes() {
                 _curr.pageIndexes.start = _curr.currentPage - _curr.pageRange;
                 if (_curr.pageIndexes.start < 0) {
                     _curr.pageIndexes.start = 0;
@@ -58,18 +45,38 @@
                 if (_curr.pageIndexes.end > _curr.maxPage) {
                     _curr.pageIndexes.end = _curr.maxPage;
                 }
+            }
 
-                _setPages();
+            function _setPageDataIndexes() {
+                _curr.pageDataIndexes.max = _curr.dataLength - 1;
+                _curr.pageDataIndexes.start = _curr.pageLength * _curr.currentPage;
+                _curr.pageDataIndexes.end = _curr.pageDataIndexes.start + _curr.pageLength;
+                if (_curr.pageDataIndexes.end > _curr.pageDataIndexes.max) {
+                    _curr.pageDataIndexes.end = _curr.pageDataIndexes.max;
+                }
+            }
+
+            function _calc() {
+                
+                _curr.pageCount = Math.ceil(_curr.dataLength / _curr.pageLength);
+                _curr.maxPage = _curr.pageCount - 1;
+
+                if (_curr.currentPage > _curr.maxPage) {
+                    _curr.currentPage = _curr.maxPage;
+                }
+
+                scope.currentPage = _curr.currentPage;
+
+                _setPageIndexes();
+
+                _setPagesArray();
 
                 scope.selectedPage = _curr.currentPage;
 
-                _curr.indexes.start = _curr.pageLength * _curr.currentPage;
-                _curr.indexes.end = _curr.indexes.start + _curr.pageLength;
-                if (_curr.indexes.end > _curr.indexes.max) {
-                    _curr.indexes.end = _curr.indexes.max;
-                }
+                _setPageDataIndexes();
+
                 _setPageData();
-                console.log("_curr", _curr);
+                //console.log("_curr", _curr);
             }
 
             scope.$watch("inpData", function (data) {
