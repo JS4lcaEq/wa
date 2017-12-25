@@ -9,7 +9,7 @@
         })
 
         .when('/home', {
-            template: '<div>home</div>'
+            template: '<h2>home</h2>'
             //, resolve:{name:"route"}
         })
 
@@ -18,5 +18,5 @@
             //, resolve:{name:"route"}
         })
 
-        .otherwise('/default');
+        .otherwise('#/default');
 });

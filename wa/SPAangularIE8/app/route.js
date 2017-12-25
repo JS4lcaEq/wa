@@ -1,22 +1,14 @@
-﻿angular.module('app').config(function ($routeProvider) {
+﻿angular.module('app').config(function ($routeProvider, $locationProvider) {
 
     $routeProvider
 
-        .when('/default', {
-            template: '<div>default: [{{$resolve.name}}]</div>'
-            , resolve: { name: function ($http) { return "return"; } }
-            , custom: "customVal"
+        .when('/VirtualScroll', {
+            templateUrl: 'app/Sections/VirtualScroll/VirtualScroll.html'
         })
 
-        .when('/home', {
-            template: '<div>home</div>'
-            //, resolve:{name:"route"}
-        })
-
-        .when('/Book/Moby', {
-            template: '<div>/Book/Moby</div>'
-            //, resolve:{name:"route"}
-        })
-
-        .otherwise('/default');
+        .when('/Pager', {
+            templateUrl: "app/Sections/Pager/Pager.html",
+            controller: "PagerCtrl",
+            controllerAs: "pCtrl"
+        });
 });

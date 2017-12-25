@@ -1093,6 +1093,9 @@
     <Content Include="SPAangularIE8\app\Directives\Pager\pagerDirective.html" />
     <Content Include="SPAangularIE8\app\Directives\Pager\pagerDirective.js" />
     <Content Include="SPAangularIE8\app\Directives\VirtualScroll\test.html" />
+    <Content Include="SPAangularIE8\app\Sections\Pager\Pager.html" />
+    <Content Include="SPAangularIE8\app\Sections\Pager\PagerController.js" />
+    <Content Include="SPAangularIE8\app\Sections\VirtualScroll\VirtualScroll.html" />
     <Content Include="SPAangularIE8\app\Services\treeService.js" />
     <Content Include="SPAangularIE8\app\virtualScrollController.js" />
     <Content Include="SPAangularIE8\app\mainController.js" />

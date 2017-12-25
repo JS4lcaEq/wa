@@ -1,0 +1,23 @@
+﻿<div class="row form-inline">
+    <div class="col-lg-2">page length: <input type="text" class="form-control" id="pageLength" ng-model="ctrl.pageLength" style="width: 100px;" /></div>
+</div>
+
+
+<div pager-directive inp-data="ctrl.data" page-data="pageData" selected-page="selectedPage" page-length="ctrl.pageLength"></div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>name</th>
+        </tr>
+
+    </thead>
+    <tbody>
+        <tr ng-repeat="item in pageData">
+            <td>{{item.id}}</td>
+            <td>{{item.name}}</td>
+        </tr>
+    </tbody>
+</table>
+<div pager-directive inp-data="ctrl.data" selected-page="selectedPage" page-length="ctrl.pageLength"></div>
+        pageData = {{selectedPage}}controller: {{pCtrl}}

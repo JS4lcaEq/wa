@@ -1,0 +1,9 @@
+﻿<div class="row form-inline">
+    <div class="col-lg-2">setter index:<input type="text" class="form-control" id="indexInput" ng-model="ctrl.index" style="width: 100px;" /></div>
+</div>
+
+<hr />
+
+<div id="vsd" virtual-scroll="item in ctrl.data" line-height="25" debug-mode="false" set-index="ctrl.index">
+    <div>{{item}}</div>
+</div>

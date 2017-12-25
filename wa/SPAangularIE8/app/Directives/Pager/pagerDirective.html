@@ -1,7 +1,7 @@
 ﻿<ul class="pagination pagination-sm">
     <li><a ng-click="onSelectedMinPage()">|&laquo;</a></li>
     <li><a ng-click="onSelectedDecrementPage()">&laquo;</a></li>
-    <li ng-repeat="item in pages" ng-class="{'active': currentPage == item}"><a ng-click="onSelectPage(item)">{{item}}</a></li>
+    <li ng-repeat="item in pages" ng-class="{'active': currentPage + 1 == item}"><a ng-click="onSelectPage(item - 1)">{{item}}</a></li>
     <li><a  ng-click="onSelectedIncrementPage()">&raquo;</a></li>
     <li><a ng-click="onSelectedMaxPage()">&raquo;|</a></li>
 </ul>

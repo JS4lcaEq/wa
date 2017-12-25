@@ -1,6 +1,6 @@
 ﻿(function () {
 
-    function fn($scope, $route, $timeout, TreeService//, $routeParams //, $location
+    function fn($scope, $route, $timeout, $routeParams , $location//, TreeService//
     ) {
         var self = this;
         function generate(n) {
@@ -12,7 +12,9 @@
             return ret;
         }
 
-        this.pageLength = 20;
+        this.$location = $location;
+        this.$routeParams = $routeParams;
+        this.pageLength = 10;
         this.index = 0;
         this.dataLength = 100;
         this.name = 'MainCtrl';

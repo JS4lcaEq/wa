@@ -30,7 +30,7 @@
             function _setPagesArray() {
                 var p = [];
                 for (var i = _curr.pageIndexes.start; i <= _curr.pageIndexes.end; i++){
-                    p.push(i);
+                    p.push(i + 1);
                 }
                 scope.pages = p;
             }
@@ -50,7 +50,7 @@
             function _setPageDataIndexes() {
                 _curr.pageDataIndexes.max = _curr.dataLength - 1;
                 _curr.pageDataIndexes.start = _curr.pageLength * _curr.currentPage;
-                _curr.pageDataIndexes.end = _curr.pageDataIndexes.start + _curr.pageLength;
+                _curr.pageDataIndexes.end = _curr.pageDataIndexes.start + _curr.pageLength - 1;
                 if (_curr.pageDataIndexes.end > _curr.pageDataIndexes.max) {
                     _curr.pageDataIndexes.end = _curr.pageDataIndexes.max;
                 }
@@ -99,7 +99,7 @@
                 
                 if (angular.isNumber(data - 0)) {
                     console.log("pageLength", data);
-                    _curr.pageLength = data;
+                    _curr.pageLength = data - 0;
                     _calc();
                 }
             });
@@ -136,7 +136,7 @@
         }
 
         return {
-            templateUrl: "app/Directives/Pager/pagerDirective.html?t=1",
+            templateUrl: "app/Directives/Pager/pagerDirective.html?t=2",
             link: link,
             scope: {
                 inpData: "=",
