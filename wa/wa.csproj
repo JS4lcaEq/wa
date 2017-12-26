@@ -1116,6 +1116,12 @@
     <Content Include="SPAangularIE8\lib\ui-scroll-grid.js" />
     <Content Include="SPAangularIE8\lib\ui-scroll-jqlite.js" />
     <Content Include="SPAangularIE8\lib\ui-scroll.js" />
+    <Content Include="SPAangularIE8\Tests\app.js" />
+    <Content Include="SPAangularIE8\Tests\dataService\dataService.html" />
+    <Content Include="SPAangularIE8\Tests\dataService\dataService.js" />
+    <Content Include="SPAangularIE8\Tests\mainController.js" />
+    <Content Include="SPAangularIE8\Tests\route.js" />
+    <Content Include="SPAangularIE8\Tests\tests.html" />
     <Content Include="SPAngular\app\app.js" />
     <Content Include="SPAngular\app\component.js" />
     <Content Include="SPAngular\app\mainController.js" />
@@ -1132,7 +1138,7 @@
     <Content Include="SPA\app\components\DataTest\DataTestComponent.js" />
     <Content Include="SPA\app\components\Pages\NotFoundPageComponent.js" />
     <Content Include="SPA\app\components\Pages\Page1Component.js" />
-    <Content Include="SPA\app\components\Pages\HomeComponent.js" />
+    <Content Include="SPA\app\components\Pages\Home\HomeComponent.js" />
     <Content Include="SPA\app\components\RouterComponent.js" />
     <Content Include="SPA\app\components\TestComponent.js" />
     <Content Include="SPA\app\components\virtualScrollComponentV1.js" />
@@ -1187,6 +1193,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="SPAangularIE8\app\Services\DataWindow\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

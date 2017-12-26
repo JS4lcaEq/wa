@@ -46,6 +46,7 @@
                         _curr.data = data;
                         _curr.indexes.max = _curr.data.length - 1;
                         _setIndexes();
+                        return true;
                     }
                 },
                 setIndex: function (startIndex) {

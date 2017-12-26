@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+    <!-- подключаем стили Mocha, для отображения результатов -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/2.1.0/mocha.css">
+    <!-- подключаем библиотеку Mocha -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/2.1.0/mocha.js"></script>
+    <!-- настраиваем Mocha: предстоит BDD-тестирование -->
+    <script>
+    var m = mocha.setup('bdd');
+    </script>
+
+
+
+    <!-- подключаем chai -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/2.0.0/chai.js"></script>
+    <!-- в chai есть много всего, выносим assert в глобальную область -->
+    <script>
+    var assert = chai.assert;
+    </script>
+
+</head>
+
+<body>
+
+    <div ng-controller="MainCtrl as ctrl">
+
+        <a href="#">home</a> | <a href="#/dataService">dataService</a> | 
+        <button ng-click="ctrl.run()">Run</button>
+        <hr />
+        <div ng-view></div>
+        <hr />
+        <!-- в элементе с id="mocha" будут результаты тестов -->
+        <div id="mocha"></div>
+    </div>
+
+    <script src="../lib/jquery-1.12.4.min.js"></script>
+    <script src="../lib/angular.min.js"></script>
+    <script src="../lib/angular-route.min.js"></script>
+    <script src="app.js"></script>
+
+    <script src="mainController.js"></script>
+    <script src="dataService/dataService.js"></script>
+    <script src="../app/Services/dataService.js"></script>
+
+    <script src="route.js"></script>
+    <script>angular.bootstrap("html", ['app']);</script>
+</body>
+
+</html>
