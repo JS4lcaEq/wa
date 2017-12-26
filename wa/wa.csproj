@@ -1128,9 +1128,12 @@
     <Content Include="SPA\app\components\VirtualScroll\virtualScrollTemplate.html" />
     <Content Include="SPA\app\DataSourceService.js" />
     <Content Include="SPA\app\Services\DataSourceService.js" />
+    <Content Include="SPA\app\Services\Template\test.html" />
+    <Content Include="SPA\app\Services\Template\test.js" />
+    <Content Include="SPA\app\Services\Template\testTemplate.html" />
     <Content Include="SPA\app\Services\WindowService.js" />
     <Content Include="SPA\app\Services\StoreService.js" />
-    <Content Include="SPA\app\Services\TemplateService.js" />
+    <Content Include="SPA\app\Services\Template\TemplateService.js" />
     <Content Include="SPA\app\WindowServiceV1.js" />
     <Content Include="SPA\app\WindowService.js" />
     <Content Include="SPA\app\IndexService.js" />
@@ -1150,6 +1153,13 @@
     <Content Include="IRS\css\Главная страница 7-11-17.png" />
     <Content Include="IRS\css\Расширенный поиск 7-11-17.png" />
     <Content Include="SPA\app\components\RouterTemplate.html" />
+    <Content Include="SPA\Tests\Componets\Pages\null\nullComponent.js" />
+    <Content Include="SPA\Tests\Componets\Pages\p1\p1Component.js" />
+    <Content Include="SPA\Tests\Componets\Pages\p1\p1Template.html" />
+    <Content Include="SPA\Tests\Componets\Pages\p2\p2Component.js" />
+    <Content Include="SPA\Tests\Index.html" />
+    <Content Include="SPA\Tests\style.css" />
+    <Content Include="SPA\Tests\vue.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

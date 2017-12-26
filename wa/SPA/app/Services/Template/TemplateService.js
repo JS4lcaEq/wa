@@ -18,7 +18,7 @@
                                     _curr.store[url] = data;
                                 },
                                 error: function (jqXHR, textStatus, errorThrown) {
-                                    _curr.store[url] = '<span>TemplateService: <strong>' + textStatus + '</strong> while loading template <strong>' + url + '</strong></span>';
+                                    throw new Error("TemplateService: " + textStatus + " while loading template " + url );
                                 }
                             }
                         );

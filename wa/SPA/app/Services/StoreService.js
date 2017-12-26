@@ -16,6 +16,7 @@
                 if (_store[name]) {
                     return _store[name];
                 }
+                throw new Error("StoreService error: calling item '" + name + "' is not exists!!!");
                 return false;
             }
         };

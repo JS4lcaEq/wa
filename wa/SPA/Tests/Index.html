@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Tests</title>
+    <link href="style.css" rel="stylesheet" />
+
+    <!-- подключаем стили Mocha, для отображения результатов -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/2.1.0/mocha.css">
+    <!-- подключаем библиотеку Mocha -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/2.1.0/mocha.js"></script>
+    <!-- настраиваем Mocha: предстоит BDD-тестирование -->
+    <script>
+        mocha.setup('bdd');
+    </script>
+
+    <!-- подключаем chai -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/2.0.0/chai.js"></script>
+    <!-- в chai есть много всего, выносим assert в глобальную область -->
+    <script>
+        var assert = chai.assert;
+    </script>
+
+</head>
+<body>
+
+
+    <div id="vue">
+
+
+        <a href="#null">null</a> | <a href="#1">1</a> | <a href="#2">2</a>
+
+        <hr />
+
+        data1:{{data1}}
+        data:{{data}}
+
+
+        <component v-bind:is="data.route.componet" :root-data="data">
+            <!-- изменяя vm.currentView можно переключаться между компонентами -->
+        </component>
+
+        <div id="mocha"></div>
+
+    </div>
+
+    <script src="../../Scripts/jquery-3.2.1.min.js"></script>
+    <script src="../../Scripts/vue.js"></script>
+    
+
+    <script src="../app/app.js"></script>
+
+    <script src="../app/Services/Template/TemplateService.js"></script>
+
+    <script src="Componets/Pages/p1/p1Component.js"></script>
+    <script src="Componets/Pages/p2/p2Component.js"></script>
+    <script src="Componets/Pages/null/nullComponent.js"></script>
+
+
+
+    <script src="vue.js"></script>
+
+</body>
+</html>
