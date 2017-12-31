@@ -8,7 +8,7 @@
         }
         
 
-        var _c = { current: { hash: window.location.hash, route: null }, routesUrl: routesUrl, onChangeFunction: null, routes: null};
+        var _c = { current: { hash: window.location.hash, route: null }, defaultRoute: null, routesUrl: routesUrl, onChangeFunction: null, routes: null};
 
         if (routesUrl) {
             _c.routesUrl = routesUrl;
@@ -23,6 +23,17 @@
                     var item = _c.routes[i];
                     if (item.hashMask && $.type(item.hashMask) === "string") {
                         item.regExp = new RegExp(item.hashMask, 'i');
+                    }
+                }
+            }
+        }
+
+        function _setDefaultRoute() {
+            if (_c.routes && $.isArray(_c.routes)) {
+                for (var i = 0; i < _c.routes.length; i++) {
+                    var item = _c.routes[i];
+                    if (item.isDefault) {
+                        _c.defaultRoute =  item;
                     }
                 }
             }
@@ -59,6 +70,7 @@
                 .done(function (data) {
                     _c.routes = data.data;
                     _setRoutesRegExp();
+                    _setDefaultRoute();
                     //console.log("second success");
                 })
                 .fail(function () {

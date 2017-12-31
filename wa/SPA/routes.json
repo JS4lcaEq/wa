@@ -2,7 +2,9 @@
   "data": [
     {
       "hashMask": "#home.*",
-      "component": "homePageComponent"
+      "component": "homePageComponent",
+      "isDefault":  true
+
     },
     {
       "hashMask": "#p1.*",
