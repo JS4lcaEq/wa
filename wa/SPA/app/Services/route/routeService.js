@@ -3,16 +3,51 @@
     
     function _fn(routesUrl) {
 
-        var _c = { current: { hash: window.location.hash, component: null }, routesUrl: "", onChangeFunction: null, routes: [{ hashMask: "", component: "home" }]};
+        if (!routesUrl) {
+            throw new Error("RouteService: ERROR NOT SET first parametr 'routesUrl' in constructor RouteService.New(routesUrl) ");
+        }
+        
+
+        var _c = { current: { hash: window.location.hash, route: null }, routesUrl: routesUrl, onChangeFunction: null, routes: null};
 
         if (routesUrl) {
             _c.routesUrl = routesUrl;
             _onChangeRoutesUrl();
-            //_onChange();
+            _onChange();
+        }
+
+
+        function _setRoutesRegExp() {
+            if (_c.routes && $.isArray(_c.routes)) {
+                for (var i = 0; i < _c.routes.length; i++) {
+                    var item = _c.routes[i];
+                    if (item.hashMask && $.type(item.hashMask) === "string") {
+                        item.regExp = new RegExp(item.hashMask, 'i');
+                    }
+                }
+            }
+        }
+
+        function _findCurrentRoute() {
+            if (_c.routes && $.isArray(_c.routes)) {
+                for (var i = 0; i < _c.routes.length; i++) {
+                    var item = _c.routes[i];
+                    if (item.regExp.test(_c.current.hash)) {
+                        _c.current.route = item;
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
 
         function _onChange() {
             _c.current.hash = window.location.hash;
+            if (_c.current.hash == "" || _c.current.hash == "#") {
+                window.location.hash = "#default";
+                return;
+            }
+            _findCurrentRoute();
             if (_c.onChangeFunction) {
                 _c.onChangeFunction(_c);
             }
@@ -23,28 +58,15 @@
             $.getJSON(_c.routesUrl)
                 .done(function (data) {
                     _c.routes = data.data;
-                    console.log("second success");
+                    _setRoutesRegExp();
+                    //console.log("second success");
                 })
                 .fail(function () {
                     throw new Error("RouteService: ERROR while loading routes from url: '" + _c.routesUrl + "'");
                 })
                 .always(function () {
-                    console.log("complete");
+                    //console.log("complete");
                 });
-            //$.ajax(
-            //    {
-            //        url: _c.routesUrl,
-            //        async: true,
-            //        dataType: "json",
-            //        success: function (data) {
-            //            _c.routes = data.data;
-            //            _onChange();
-            //        },
-            //        error: function (jqXHR, textStatus, errorThrown) {
-            //            throw new Error("RouteService: " + textStatus + " while loading routes from url: '" + _c.routesUrl + "'");
-            //        }
-            //    }
-            //);
          }
 
 

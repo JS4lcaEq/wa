@@ -2,18 +2,11 @@
   "data": [
     {
       "hashMask": "#home.*",
-      "component": "homePageComponent",
-      "linkText": "Home",
-      "linkTitle": "Link to Home page",
-      "linkHref": "#home"
-
+      "component": "homePageComponent"
     },
     {
       "hashMask": "#p1.*",
-      "component": "p1PageComponent",
-      "linkText": "P1",
-      "linkTitle": "Link to P1 page",
-      "linkHref": "#p1"
+      "component": "p1PageComponent"
     }
   ]
 }
