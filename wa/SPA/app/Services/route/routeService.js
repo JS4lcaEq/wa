@@ -32,7 +32,7 @@
             if (_c.routes && $.isArray(_c.routes)) {
                 for (var i = 0; i < _c.routes.length; i++) {
                     var item = _c.routes[i];
-                    if (item.regExp.test(_c.current.hash)) {
+                    if (item.regExp && item.regExp.test(_c.current.hash)) {
                         _c.current.route = item;
                         return true;
                     }
