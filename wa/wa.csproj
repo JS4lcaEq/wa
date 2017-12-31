@@ -1128,6 +1128,7 @@
     <Content Include="SPA\app\components\VirtualScroll\virtualScrollTemplate.html" />
     <Content Include="SPA\app\DataSourceService.js" />
     <Content Include="SPA\app\Services\DataSourceService.js" />
+    <Content Include="SPA\app\Services\route\routeService.js" />
     <Content Include="SPA\app\Services\Template\test.html" />
     <Content Include="SPA\app\Services\Template\test.js" />
     <Content Include="SPA\app\Services\Template\testTemplate.html" />
@@ -1179,6 +1180,7 @@
     <Content Include="SPAangularIE8\lib\angular-route.min.js.map" />
     <Content Include="SPAangularIE8\lib\angular.min.js.map" />
     <Content Include="SPAangularIE8\app\Services\treeServiceTestData.json" />
+    <Content Include="SPA\routes.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

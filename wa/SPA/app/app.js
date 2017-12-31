@@ -2,11 +2,11 @@
     var _servicesFn = {};
     var _servicesItems = {};
     var _injections = {};
-    if (!window.pplctn) {
-        window.pplctn = {};
+    if (!window.app) {
+        window.app = {};
     }
-    if (!window.pplctn.services) {
-        window.pplctn.services = function (name, fn, injections) {
+    if (!window.app.services) {
+        window.app.services = function (name, fn, injections) {
             if (fn) {
                 if (_servicesFn[name]) {
                     console.log("App error: creating service '" + name + "' is exists, already!!!");
@@ -17,7 +17,7 @@
                 if (injections) {
                     _injections[name] = injections;
                 }
-                return window.pplctn;
+                return window.app;
             } else {
                 if (!_servicesFn[name]) {
                     console.log("App error: call undefined service '" + name + "'!!!");
@@ -29,7 +29,7 @@
                     if (_injections[name]) {
                         for (var i = 0; i < _injections[name].length; i++) {
                             var injectionName = _injections[name][i];
-                            var injection = window.pplctn.services(injectionName);
+                            var injection = window.app.services(injectionName);
                             if (injection) {
                                 args.push(injection);
                             }

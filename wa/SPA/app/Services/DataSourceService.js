@@ -51,6 +51,6 @@
         };
     }
 
-    pplctn.services("DataSourceService", fn);
+    app.services("DataSourceService", fn);
 
 })();

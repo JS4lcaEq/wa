@@ -99,6 +99,6 @@
 
     }
 
-    pplctn.services("WindowService", fn);
+    app.services("WindowService", fn);
 
 })();

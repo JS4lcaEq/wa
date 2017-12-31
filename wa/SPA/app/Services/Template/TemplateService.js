@@ -31,6 +31,6 @@
 
     }
 
-    pplctn.services("TemplateService", fn);
+    app.services("TemplateService", fn);
 
 })();

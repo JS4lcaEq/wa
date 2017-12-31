@@ -22,6 +22,6 @@
         };
     }
 
-    pplctn.services("StoreService", fn);
+    app.services("StoreService", fn);
 
 })();

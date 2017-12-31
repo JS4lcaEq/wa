@@ -1,7 +1,9 @@
 ﻿(function () {
 
     Vue.component('p1-component', {
-        template: pplctn.services("TemplateService").Get("Componets/Pages/p1/p1Template.html"),
+
+        template: app.services("TemplateService").Get("Componets/Pages/p1/p1Template.html"),
+
         data: function () {
             return {
                 data: {
@@ -10,12 +12,13 @@
                 }
             };
         },
+
         props: ["rootData"],
+
         mounted: function () {
             var self = this;
-
-
         }
+
     });
 
 
