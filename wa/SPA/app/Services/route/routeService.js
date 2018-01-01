@@ -54,11 +54,12 @@
 
         function _onChange() {
             _c.current.hash = window.location.hash;
-            if (_c.current.hash == "" || _c.current.hash == "#") {
-                window.location.hash = "#default";
+
+            _findCurrentRoute();
+            if (_c.current.hash == "" && _c.defaultRoute && _c.defaultRoute.hash) {
+                window.location.hash = _c.defaultRoute.hash;
                 return;
             }
-            _findCurrentRoute();
             if (_c.onChangeFunction) {
                 _c.onChangeFunction(_c);
             }
@@ -71,7 +72,7 @@
                     _c.routes = data.data;
                     _setRoutesRegExp();
                     _setDefaultRoute();
-                    //console.log("second success");
+                    _onChange();
                 })
                 .fail(function () {
                     throw new Error("RouteService: ERROR while loading routes from url: '" + _c.routesUrl + "'");

@@ -3,7 +3,8 @@
     {
       "hashMask": "#home.*",
       "component": "homePageComponent",
-      "isDefault":  true
+      "isDefault": true,
+      "hash": "#home"
 
     },
     {
