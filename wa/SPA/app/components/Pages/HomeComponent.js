@@ -1,6 +1,6 @@
 ﻿(function () {
 
-    Vue.component('home-page-component', {
+    Vue.component('homePageComponent', {
         template:
         '<div>'+
         '<h1>Home page</h1>' +

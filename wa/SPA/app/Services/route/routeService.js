@@ -40,23 +40,22 @@
         }
 
         function _findCurrentRoute() {
+            _c.current.route = null;
             if (_c.routes && $.isArray(_c.routes)) {
                 for (var i = 0; i < _c.routes.length; i++) {
                     var item = _c.routes[i];
                     if (item.regExp && item.regExp.test(_c.current.hash)) {
                         _c.current.route = item;
-                        return true;
                     }
                 }
             }
-            return false;
         }
 
         function _onChange() {
             _c.current.hash = window.location.hash;
 
             _findCurrentRoute();
-            if (_c.current.hash == "" && _c.defaultRoute && _c.defaultRoute.hash) {
+            if (!_c.current.route && _c.defaultRoute && _c.defaultRoute.hash) {
                 window.location.hash = _c.defaultRoute.hash;
                 return;
             }
