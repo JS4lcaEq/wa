@@ -5,14 +5,14 @@
     _curr.scroll.max = _options.scroll.base + _options.scroll.step;
     var _index = 0;
 
-    var _ds = window.pplctn.services("DataSourceService").New();
+    var _ds = app.services("DataSourceService").New();
 
-    var _ws = window.pplctn.services("WindowService").New();
+    var _ws = app.services("WindowService").New();
 
     _ws.SetLen(20);
 
     Vue.component('virtual-scroll-component', {
-        template: pplctn.services("TemplateService").Get("app/components/virtualScrollTemplate.html"),
+        template: app.services("TemplateService").Get("app/components/virtualScrollTemplate.html"),
 
         data: function () {
             //console.log("data ");

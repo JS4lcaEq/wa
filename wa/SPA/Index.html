@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <title>vue</title>
+    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
     <link href="style.css" rel="stylesheet" />
 </head>
 <body>
@@ -18,12 +19,16 @@
             <li>
                 <a href="#p1">Page1</a>
             </li>
+            <li>
+                <a href="dstest.html">dtest</a>
+            </li>
         </ul>
         <template v-if="data.routes.current.route">
-            <hr />
-            {{data.routes.current.route.component}}
+            <div class="container">
+                {{data.routes.current.route.component}}
 
-            <component v-bind:is="data.routes.current.route.component"></component>
+                <component v-bind:is="data.routes.current.route.component"></component>
+            </div>
         </template>
 
         <hr />
@@ -34,6 +39,8 @@
     </div>
 
     <script src="../Scripts/jquery-3.2.1.min.js"></script>
+    <script src="../Scripts/bootstrap.min.js"></script>
+
     <script src="app/app.js"></script>
 
     <script src="app/Services/route/routeService.js?v=1"></script>
@@ -46,10 +53,12 @@
 
 
 
-    <!--<script src="app/components/Pages/HomeComponent.js"></script>
+    <!-- 
+    <script src="app/components/Pages/HomeComponent.js"></script>
     <script src="app/components/Pages/NotFoundPageComponent.js"></script>
     <script src="app/components/Pages/Page1Component.js"></script>
-    <script src="app/components/RouterComponent.js"></script>-->
+    <script src="app/components/RouterComponent.js"></script> 
+    -->
 
     <script src="app/vue.js"></script>
 

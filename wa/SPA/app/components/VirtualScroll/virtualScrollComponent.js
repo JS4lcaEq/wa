@@ -14,7 +14,7 @@
     //_curr.scroll.max = _options.scroll.base + _options.scroll.step;
     var _index = 0;
 
-    var _ws = window.pplctn.services("WindowService").New();
+    var _ws = app.services("WindowService").New();
     _ws.SetLen(30);
 
     function _addStat(scroll){
@@ -26,7 +26,7 @@
     }
 
     Vue.component('virtual-scroll-component', {
-        template: pplctn.services("TemplateService").Get("app/components/VirtualScroll/virtualScrollTemplate.html"),
+        template: app.services("TemplateService").Get("app/components/VirtualScroll/virtualScrollTemplate.html"),
 
         data: function () {
             //console.log("data ");
@@ -170,7 +170,7 @@
 
             
 
-            var _ds = pplctn.services("StoreService").Get(self.src);
+            var _ds = app.services("StoreService").Get(self.src);
 
             self.current._index = _index;
             self.current.id += _index;

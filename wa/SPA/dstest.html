@@ -32,7 +32,7 @@
     <script src="app/Services/DataSourceService.js"></script>
     <script src="app/Services/WindowService.js"></script>
     <script src="app/Services/StoreService.js"></script>
-    <script src="app/Services/TemplateService.js"></script>
+    <script src="app/Services/Template/TemplateService.js"></script>
     <script src="app/components/DataTest/DataTestComponent.js"></script>
     <script src="app/components/VirtualScroll/virtualScrollComponent.js"></script>
     <script>
@@ -40,15 +40,15 @@
 
             var _testData = {};
 
-            var _ds = pplctn.services("DataSourceService").New();
-            var _ws = pplctn.services("WindowService").New();
-            var _ss = pplctn.services("StoreService");
+            var _ds = app.services("DataSourceService").New();
+            var _ws = app.services("WindowService").New();
+            var _ss = app.services("StoreService");
             _ss.Set(_ds, "dss");
 
             _ds.addObserver(function (data) { _ws.SetSrc(data); });
 
 
-            pplctn.vue = new Vue({
+            app.vue = new Vue({
                 el: '#vue',
 
                 data: {
@@ -84,7 +84,7 @@
 
                 computed: {
                     Ds: function () {
-                        return pplctn.services("DataSourceService");
+                        return app.services("DataSourceService");
                     }
                     
                     , ViewComponent: function () {

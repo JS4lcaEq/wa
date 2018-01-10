@@ -9,7 +9,7 @@
 
 
     var c = Vue.extend({
-        template: pplctn.services("TemplateService").Get("app/components/RouterTemplate.html")
+        template: app.services("TemplateService").Get("app/components/RouterTemplate.html")
         ,
         data: function () {
             return {

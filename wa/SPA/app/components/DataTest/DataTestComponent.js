@@ -1,6 +1,6 @@
 ﻿(function () {
 
-    var _ws = pplctn.services("WindowService").New();
+    var _ws = app.services("WindowService").New();
     _ws.SetLen(11);
 
     var cc = Vue.component('data-test-component', {
@@ -29,7 +29,7 @@
 
         created: function () {
             var self = this;
-            var ds = pplctn.services("StoreService").Get(self.src);
+            var ds = app.services("StoreService").Get(self.src);
             ds.addObserver(function (data) {
                 _ws.SetSrc(data);
                 self.win = _ws.Get();
