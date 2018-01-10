@@ -1115,9 +1115,11 @@
     <Content Include="SPAngular\virtualScrollDirectiveTemplate.html" />
     <Content Include="SPA\app\app.js" />
     <Content Include="SPA\app\components\DataTest\DataTestComponent.js" />
+    <Content Include="SPA\app\components\Pages\Home\HomeComponentTemplate.html" />
     <Content Include="SPA\app\components\Pages\NotFoundPageComponent.js" />
-    <Content Include="SPA\app\components\Pages\Page1Component.js" />
-    <Content Include="SPA\app\components\Pages\HomeComponent.js" />
+    <Content Include="SPA\app\components\Pages\Page1\Page1Component.js" />
+    <Content Include="SPA\app\components\Pages\Home\HomeComponent.js" />
+    <Content Include="SPA\app\components\Pages\Page1\Page1ComponentTemplate.html" />
     <Content Include="SPA\app\components\RouterComponent.js" />
     <Content Include="SPA\app\components\TestComponent.js" />
     <Content Include="SPA\app\components\virtualScrollComponentV1.js" />

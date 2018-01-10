@@ -17,10 +17,9 @@
 
     });
 
-    rs.setOnChange(function (data) {
-        vue.data.routes = data; 
-    });
+    //rs.setOnChange(function (data) {
+    //    vue.data.routes = data; 
+    //});
 
-    //$(window).on("hashchange" , function () { vue.data.hash = window.location.hash; });
-    //vue.data.hash = window.location.hash;
+
 })();

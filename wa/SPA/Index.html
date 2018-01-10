@@ -19,8 +19,13 @@
                 <a href="#p1">Page1</a>
             </li>
         </ul>
-        <hr />
-        {{data.routes.current.route}}
+        <template v-if="data.routes.current.route">
+            <hr />
+            {{data.routes.current.route.component}}
+
+            <component v-bind:is="data.routes.current.route.component"></component>
+        </template>
+
         <hr />
             {{data.routes}}
 
@@ -32,23 +37,19 @@
     <script src="app/app.js"></script>
 
     <script src="app/Services/route/routeService.js?v=1"></script>
+    <script src="app/Services/Template/TemplateService.js"></script>
 
     <script src="../Scripts/vue.js"></script>
 
-
-
-
-
-
+    <script src="app/components/Pages/Home/HomeComponent.js"></script>
+    <script src="app/components/Pages/Page1/Page1Component.js"></script>
 
 
 
     <!--<script src="app/components/Pages/HomeComponent.js"></script>
     <script src="app/components/Pages/NotFoundPageComponent.js"></script>
     <script src="app/components/Pages/Page1Component.js"></script>
-
     <script src="app/components/RouterComponent.js"></script>-->
-
 
     <script src="app/vue.js"></script>
 

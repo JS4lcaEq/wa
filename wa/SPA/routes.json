@@ -9,7 +9,7 @@
     },
     {
       "hashMask": "#p1.*",
-      "component": "p1PageComponent"
+      "component": "page1Component"
     }
   ]
 }
