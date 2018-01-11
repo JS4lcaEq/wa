@@ -5,6 +5,7 @@
     <title>vue</title>
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
     <link href="style.css" rel="stylesheet" />
+    <link href="app/components/VirtualScrollEmulate/virtualScrollEmulateStyle.css" rel="stylesheet" />
 </head>
 <body>
     <div id="vue">
@@ -19,6 +20,10 @@
         <hr />
         {{$route.path}} | {{$route.params}}
 
+        <div style="height: 50%; width: 50%; border: solid 1px #ccc;">
+            <virtual-scroll-emulate-component></virtual-scroll-emulate-component>
+        </div>
+
     </div>
 
     <script src="../Scripts/jquery-3.2.1.min.js"></script>
@@ -26,9 +31,9 @@
 
     <script src="app/app.js"></script>
 
-    <!--<script src="app/Services/route/routeService.js?v=1"></script>-->
-    <script src="app/Services/Template/TemplateService.js"></script>
 
+    <script src="app/Services/Template/TemplateService.js"></script>
+    <script src="app/Services/WindowService.js"></script>
     <script src="../Scripts/vue.js"></script>
     <script src="../Scripts/vue-router.js"></script>
 
@@ -36,7 +41,7 @@
     <script src="app/components/Pages/Home/HomeComponent.js"></script>
     <script src="app/components/Pages/Page1/Page1Component.js"></script>
 
-
+    <script src="app/components/VirtualScrollEmulate/virtualScrollEmulateComponent.js"></script>
 
     <script src="app/vue.js"></script>
 

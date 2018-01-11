@@ -1123,6 +1123,9 @@
     <Content Include="SPA\app\components\Pages\Page1\Page1ComponentTemplate.html" />
     <Content Include="SPA\app\components\RouterComponent.js" />
     <Content Include="SPA\app\components\TestComponent.js" />
+    <Content Include="SPA\app\components\VirtualScrollEmulate\virtualScrollEmulateStyle.css" />
+    <Content Include="SPA\app\components\VirtualScrollEmulate\virtualScrollEmulateComponent.js" />
+    <Content Include="SPA\app\components\VirtualScrollEmulate\virtualScrollEmulateTemplate.html" />
     <Content Include="SPA\app\components\virtualScrollComponentV1.js" />
     <Content Include="SPA\app\components\virtualScrollComponent.js" />
     <Content Include="SPA\app\components\virtualScrollTemplate.html" />
@@ -1164,7 +1167,6 @@
     <Content Include="SPA\Tests\Index.html" />
     <Content Include="SPA\Tests\style.css" />
     <Content Include="SPA\Tests\vue.js" />
-    <Content Include="SPA\testVueRouter.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

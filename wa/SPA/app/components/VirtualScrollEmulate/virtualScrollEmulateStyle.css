@@ -1,0 +1,50 @@
+﻿
+
+/* virtual-scroll-component */
+.virtual-scroll-emulate-component {
+    overflow: hidden;
+    height: 100%;
+    /*display: table-row;*/
+}
+    .virtual-scroll-emulate-component ul {
+        background-color: #cfc;
+        display:inline-block;
+        width:80%;
+        height: 100%;
+    }
+    .virtual-scroll-emulate-component .scroll {
+        background-color: #ccc;
+        width: 19px;
+        height: 100%;
+        overflow-y: auto;
+        display: inline-block;
+        /*margin-left: -20px;*/
+    }
+
+    .virtual-scroll-emulate-component slider {
+        height: 900px;
+    }
+
+.virtual-scroll-component-list-box {
+    /*background-color: aliceblue;*/
+    overflow-y: scroll;
+}
+
+.virtual-scroll-component ul {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 470px;
+}
+
+.virtual-scroll-component li {
+    overflow: hidden;
+}
+
+.virtual-scroll-component-debug {
+    position: absolute;
+    background-color: goldenrod;
+    opacity: 0.5;
+    margin-top: 2px;
+
+}
+/* /virtual-scroll-component */
