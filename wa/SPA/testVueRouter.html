@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div id="app">
+        <h1>Hello App!</h1>
+        <p>
+            <!-- используйте компонент router-link для создания ссылок -->
+            <!-- входной параметр `to` определяет путь для перехода -->
+            <!-- `<router-link>` по умолчанию преобразуется в тег `<a>` -->
+            <router-link to="/">Home</router-link> | 
+            <router-link to="/foo">Go to Foo</router-link> |
+            <router-link to="/bar">Go to Bar</router-link> |
+            <router-link to="/bar/1">Go to Bar 1</router-link>
+        </p>
+        <!-- отображение компонента, для которого совпал путь -->
+        <router-view></router-view>
+        <hr />
+        {{$route.path}} | {{$route.params}}
+    </div>
+    <script src="../Scripts/jquery-3.2.1.min.js"></script>
+    <script src="../Scripts/bootstrap.min.js"></script>
+
+    <script src="app/app.js"></script>
+
+    <script src="app/Services/Template/TemplateService.js"></script>
+    <script src="../Scripts/vue.js"></script>
+    <script src="../Scripts/vue-router.js"></script>
+
+    <script src="app/components/Pages/Home/HomeComponent.js"></script>
+
+    <script>
+        // 1. Определение используемых компонентов
+        // Они могут быть импортированы из внешних файлов
+        const Foo = { template: '<div>foo</div>' };
+        const Bar = { template: '<div>bar{{data}}</div>', data: function () { return { data: "data" };} };
+
+        // 2. Определение путей
+        // Каждый путь должен указывать на компонент
+        // "Компонентом" может быть как созданный через `Vue.extend()`
+        // полноценный конструктор, так и просто объект с настройками компонента
+        // Вложенные пути будут рассмотрены далее.
+        const routes = [
+            { path: '/', component: Vue.component('homePageComponent') },
+            { path: '/foo', component: Foo },
+            { path: '/bar', component: Bar },
+            { path: '/bar/:id', component: Bar }
+
+        ];
+
+        // 3. Создаём экземпляр роутера с опцией `routes`
+        // Можно передать и другие опции, но пока не будем усложнять
+        const router = new VueRouter({
+            routes: routes
+        });
+
+        // 4. Создаём и монтируем корневой экземпляр Vue нашего приложения.
+        // Удостоверьтесь, что передали экземпляр роутера в опции `router`,
+        // что позволит приложению знать о его наличии
+        const app = new Vue({
+            el: '#app',
+            router: router
+        });
+    </script>
+</body>
+</html>

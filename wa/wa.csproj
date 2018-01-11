@@ -1083,6 +1083,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\vue-router.js" />
     <Content Include="Scripts\vue.js" />
     <Content Include="SPAangularIE8\app\app.js" />
     <Content Include="SPAangularIE8\app\component.js" />
@@ -1163,6 +1164,7 @@
     <Content Include="SPA\Tests\Index.html" />
     <Content Include="SPA\Tests\style.css" />
     <Content Include="SPA\Tests\vue.js" />
+    <Content Include="SPA\testVueRouter.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

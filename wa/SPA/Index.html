@@ -9,32 +9,15 @@
 <body>
     <div id="vue">
 
-        <ul>
-            <li>
-                <a href="#default">Default</a>
-            </li>
-            <li>
-                <a href="#home">Home</a>
-            </li>
-            <li>
-                <a href="#p1">Page1</a>
-            </li>
-            <li>
-                <a href="dstest.html">dtest</a>
-            </li>
-        </ul>
-        <template v-if="data.routes.current.route">
-            <div class="container">
-                {{data.routes.current.route.component}}
+        <router-link to="/">Home</router-link> |
+        <router-link to="/foo">Go to Foo</router-link> |
+        <router-link to="/bar">Go to Bar</router-link> |
+        <router-link to="/bar/1">Go to Bar 1</router-link> |
+        <router-link to="/bar/1/2">Go to Bar 1 2</router-link>
 
-                <component v-bind:is="data.routes.current.route.component"></component>
-            </div>
-        </template>
-
+        <router-view></router-view>
         <hr />
-            {{data.routes}}
-
-
+        {{$route.path}} | {{$route.params}}
 
     </div>
 
@@ -43,22 +26,17 @@
 
     <script src="app/app.js"></script>
 
-    <script src="app/Services/route/routeService.js?v=1"></script>
+    <!--<script src="app/Services/route/routeService.js?v=1"></script>-->
     <script src="app/Services/Template/TemplateService.js"></script>
 
     <script src="../Scripts/vue.js"></script>
+    <script src="../Scripts/vue-router.js"></script>
+
 
     <script src="app/components/Pages/Home/HomeComponent.js"></script>
     <script src="app/components/Pages/Page1/Page1Component.js"></script>
 
 
-
-    <!-- 
-    <script src="app/components/Pages/HomeComponent.js"></script>
-    <script src="app/components/Pages/NotFoundPageComponent.js"></script>
-    <script src="app/components/Pages/Page1Component.js"></script>
-    <script src="app/components/RouterComponent.js"></script> 
-    -->
 
     <script src="app/vue.js"></script>
 
