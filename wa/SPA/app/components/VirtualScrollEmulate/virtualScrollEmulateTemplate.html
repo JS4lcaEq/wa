@@ -1,8 +1,17 @@
-﻿<div class="virtual-scroll-emulate-component"><ul>
-        <li v-for="item in [1,2,3,4,5,6,7,8,9,0]" >{{item}}<slot name="itemTemplate" v-bind:item="item"></slot></li>
-    </ul><div class="scroll">
-        <div class="slider">&nbsp;</div>
+﻿<div class="virtual-scroll-emulate-component">
+    <ul>
+        <li v-for="item in [1,2,3,4,5,6,7,8,9,0,1,2,3,4,5]">
+            item: {{item}} slot
+            <slot name="itemTemplate" v-bind:item="item"></slot> 
+            /slot looooooong tooo loooooong string
+        </li>
+
+    <!--ВАЖНО!!! не допускать пробела между /ul> и <div скрола а то скролл уйдет на вторую строку-->
+    </ul><div class="scroll" v-on:scroll="onFastScroll" >
+
+        <div class="slider">&nbsp</div>
     </div>
+
     <!--<div class="virtual-scroll-component-debug" v-bind:style="getDebugStyle" v-on:click="onDebugClick()">{{debug}}</div>-->
 
 </div>

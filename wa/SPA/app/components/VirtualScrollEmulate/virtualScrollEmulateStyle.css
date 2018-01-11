@@ -2,49 +2,40 @@
 
 /* virtual-scroll-component */
 .virtual-scroll-emulate-component {
-    overflow: hidden;
+    /*overflow: hidden;*/
     height: 100%;
-    /*display: table-row;*/
 }
     .virtual-scroll-emulate-component ul {
-        background-color: #cfc;
+        /*background-color: #cfc;*/
         display:inline-block;
-        width:80%;
+        width:100%;
         height: 100%;
+        margin:0;
+        padding:0;
+        overflow: hidden;
     }
+
+    .virtual-scroll-emulate-component li {
+
+
+        width: 100%;
+        height: 20px;
+
+        overflow: hidden;
+    }
+
     .virtual-scroll-emulate-component .scroll {
-        background-color: #ccc;
-        width: 19px;
+        /*background-color: #ccc;*/
+        width: 29px;
         height: 100%;
         overflow-y: auto;
         display: inline-block;
-        /*margin-left: -20px;*/
+        margin-left: -30px;
     }
 
-    .virtual-scroll-emulate-component slider {
-        height: 900px;
+    .virtual-scroll-emulate-component .slider {
+        height: 9900px;
     }
 
-.virtual-scroll-component-list-box {
-    /*background-color: aliceblue;*/
-    overflow-y: scroll;
-}
 
-.virtual-scroll-component ul {
-    margin: 0;
-    padding: 0;
-    margin-bottom: 470px;
-}
-
-.virtual-scroll-component li {
-    overflow: hidden;
-}
-
-.virtual-scroll-component-debug {
-    position: absolute;
-    background-color: goldenrod;
-    opacity: 0.5;
-    margin-top: 2px;
-
-}
 /* /virtual-scroll-component */

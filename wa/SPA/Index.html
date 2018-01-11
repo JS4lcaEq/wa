@@ -3,9 +3,15 @@
 <head>
     <meta charset="utf-8" />
     <title>vue</title>
-    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+    <!--<link href="../Content/bootstrap.min.css" rel="stylesheet" />-->
     <link href="style.css" rel="stylesheet" />
     <link href="app/components/VirtualScrollEmulate/virtualScrollEmulateStyle.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+
+
+
+
 </head>
 <body>
     <div id="vue">
@@ -17,26 +23,43 @@
         <router-link to="/bar/1/2">Go to Bar 1 2</router-link>
 
         <router-view></router-view>
+
         <hr />
         {{$route.path}} | {{$route.params}}
 
-        <div style="height: 50%; width: 50%; border: solid 1px #ccc;">
-            <virtual-scroll-emulate-component></virtual-scroll-emulate-component>
-        </div>
+  
+            <virtual-scroll-emulate-component style="height: 50%; width: 50%;"  class="form-control"></virtual-scroll-emulate-component>
+
+
+        <el-button @click="visible = true">Button</el-button>
+        <el-dialog :visible.sync="visible" title="Hello world">
+            <p>Try Element</p>
+        </el-dialog>
+
+        <hr />
+
+        <el-date-picker v-model="value1"
+                        type="date"
+                        placeholder="Pick a day">
+        </el-date-picker>
 
     </div>
 
     <script src="../Scripts/jquery-3.2.1.min.js"></script>
-    <script src="../Scripts/bootstrap.min.js"></script>
+    <!--<script src="../Scripts/bootstrap.min.js"></script>-->
 
     <script src="app/app.js"></script>
 
 
     <script src="app/Services/Template/TemplateService.js"></script>
     <script src="app/Services/WindowService.js"></script>
+
     <script src="../Scripts/vue.js"></script>
     <script src="../Scripts/vue-router.js"></script>
 
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script src="http://unpkg.com/element-ui/lib/umd/locale/ru-RU.js"></script>
+    <script src="http://unpkg.com/element-ui/lib/umd/locale/en.js"></script>
 
     <script src="app/components/Pages/Home/HomeComponent.js"></script>
     <script src="app/components/Pages/Page1/Page1Component.js"></script>
