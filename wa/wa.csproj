@@ -248,6 +248,7 @@
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Element.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -329,6 +330,8 @@
     <Content Include="IRS\js\jquery-3.2.1.min.map" />
     <Content Include="IRS\js\errors.json" />
     <Content Include="IRS\js\version.json" />
+    <Content Include="Content\fonts\element-icons.ttf" />
+    <Content Include="Content\fonts\element-icons.woff" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
     <Content Include="Scripts\html5shiv.min.js" />
     <Content Include="Scripts\i18n\angular-locale_af-na.js" />
