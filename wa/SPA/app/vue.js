@@ -19,8 +19,8 @@
     // полноценный конструктор, так и просто объект с настройками компонента
     // Вложенные пути будут рассмотрены далее.
     var routes = [
-        { path: '/', component: Vue.component('homePageComponent') },
-        { path: '/foo', component: Vue.component('page1Component') },
+        { path: '/', component: Vue.component('homePageComponent'), meta: { header: "Home" } },
+        { path: '/pickers', component: Vue.component('pickersPageComponent'), meta: {header: "Pickers"} },
         { path: '/bar', component: Vue.component('page1Component')},
         { path: '/bar/:id', component: Vue.component('page1Component') },
         { path: '/bar/:p1/:p2', component: Vue.component('page1Component') }

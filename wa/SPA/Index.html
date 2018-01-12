@@ -6,27 +6,36 @@
     <!--<link href="../Content/bootstrap.min.css" rel="stylesheet" />-->
     <link href="style.css" rel="stylesheet" />
     <link href="app/components/VirtualScrollEmulate/virtualScrollEmulateStyle.css" rel="stylesheet" />
-
+    <link rel="shortcut icon" type="image/x-icon" href="lib/Content/favicon.ico" />
     <link href="lib/Content/Element.css" rel="stylesheet" />
 
 
 </head>
 <body>
     <div id="vue">
-
+        <el-row :gutter="10">
+            <el-col :xs="8" :sm="6" :md="4" :lg="3" :xl="1"><div class="grid-content bg-purple">l</div></el-col>
+            <el-col :xs="4" :sm="6" :md="8" :lg="9" :xl="11"><div class="grid-content bg-purple-light">1</div></el-col>
+            <el-col :xs="4" :sm="6" :md="8" :lg="9" :xl="11"><div class="grid-content bg-purple">2</div></el-col>
+            <el-col :xs="8" :sm="6" :md="4" :lg="3" :xl="1"><div class="grid-content bg-purple-light">r</div></el-col>
+        </el-row>
         <router-link to="/">Home</router-link> |
-        <router-link to="/foo">Go to Foo</router-link> |
+        <router-link to="/pickers">Pickers</router-link> |
         <router-link to="/bar">Go to Bar</router-link> |
         <router-link to="/bar/1">Go to Bar 1</router-link> |
         <router-link to="/bar/1/2">Go to Bar 1 2</router-link>
 
+        <hr />
+        <h2>{{$route.meta.header}}</h2>
+        <hr />
+
         <router-view></router-view>
 
         <hr />
-        {{$route.path}} | {{$route.params}}
+        {{$route}} | {{$route.params}}
 
   
-            <virtual-scroll-emulate-component style="height: 50%; width: 50%;"  class="form-control"></virtual-scroll-emulate-component>
+ 
 
 
         <el-button @click="visible = true">Button</el-button>
@@ -36,10 +45,7 @@
 
         <hr />
 
-        <el-date-picker v-model="value1"
-                        type="date"
-                        placeholder="Pick a day">
-        </el-date-picker>
+
 
     </div>
 
@@ -57,10 +63,12 @@
     <script src="lib/Scripts/Element.js"></script>
     <script src="lib/Scripts/Element_ru-RU.js"></script>
 
+    <script src="app/components/VirtualScrollEmulate/virtualScrollEmulateComponent.js"></script>
+
     <script src="app/components/Pages/Home/HomeComponent.js"></script>
     <script src="app/components/Pages/Page1/Page1Component.js"></script>
+    <script src="app/components/Pages/Pickers/PickersPageComponent.js"></script>
 
-    <script src="app/components/VirtualScrollEmulate/virtualScrollEmulateComponent.js"></script>
 
     <script src="app/vue.js"></script>
 

@@ -1124,6 +1124,8 @@
     <Content Include="SPA\app\components\Pages\Page1\Page1Component.js" />
     <Content Include="SPA\app\components\Pages\Home\HomeComponent.js" />
     <Content Include="SPA\app\components\Pages\Page1\Page1ComponentTemplate.html" />
+    <Content Include="SPA\app\components\Pages\Pickers\PickersPageComponent.js" />
+    <Content Include="SPA\app\components\Pages\Pickers\PickersPageComponent.html" />
     <Content Include="SPA\app\components\RouterComponent.js" />
     <Content Include="SPA\app\components\TestComponent.js" />
     <Content Include="SPA\app\components\VirtualScrollEmulate\virtualScrollEmulateStyle.css" />
@@ -1153,7 +1155,10 @@
     <Content Include="SPA\dstest.html" />
     <Content Include="SPA\Index.html" />
     <Content Include="SPA\lib\Content\Element.css" />
+    <Content Include="SPA\lib\Content\favicon.ico" />
     <Content Include="SPA\lib\Content\Site.css" />
+    <Content Include="SPA\lib\Content\vtb_lines_32.ico" />
+    <Content Include="SPA\lib\Content\vtb_lines_32.png" />
     <Content Include="SPA\lib\Scripts\Element.js" />
     <Content Include="SPA\lib\Scripts\Element_ru-RU.js" />
     <Content Include="SPA\lib\Scripts\html5shiv.min.js" />
