@@ -37,6 +37,16 @@ ul {
     margin-left: 140px;
 }
 
+
+/* mark for debug */
+.bg-purple {
+    background-color: #ccc;
+}
+.bg-purple-light {
+    background-color: #ddd;
+}
+/* mark for debug */
+
 /* virtual-scroll-component */
 .virtual-scroll-component {
     border: 1px solid #ccc;
